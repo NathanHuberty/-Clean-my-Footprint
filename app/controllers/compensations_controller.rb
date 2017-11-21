@@ -1,0 +1,2 @@
+class CompensationsController < ApplicationController
+end
