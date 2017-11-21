@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 20171121105241) do
 
   create_table "trips", force: :cascade do |t|
     t.float    "km"
-    t.integer  "number"
+    t.integer  "number",              default: 1
     t.string   "start_address"
     t.string   "destination_address"
     t.integer  "user_id"
     t.integer  "transportation_id"
     t.integer  "compensation_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["compensation_id"], name: "index_trips_on_compensation_id", using: :btree
     t.index ["transportation_id"], name: "index_trips_on_transportation_id", using: :btree
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
