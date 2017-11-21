@@ -5,5 +5,13 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+
+    #trips/new
+
+    #trips/index
+
+    #compensations/new
+
+    #projects/index
   end
 end

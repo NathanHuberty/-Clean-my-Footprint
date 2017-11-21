@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :trips, only: [:create, :show, :index, :new] do
-    resources :compensations, only: [:new, :create], shallow: :true
+  resources :trips, only: :create do
+    resources :compensations, only: :create, shallow: :true
   end
-  resources :projects, only: [:index, :show]
+  resources :projects, only: :show
   resources :users, only: :show
 end

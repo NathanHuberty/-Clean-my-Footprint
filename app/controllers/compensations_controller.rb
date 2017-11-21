@@ -1,8 +1,5 @@
 class CompensationsController < ApplicationController
 
-  def new
-  end
-
   def create
   end
 
