@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :trips, only: [:create, :show, :index, :new] do
-    resources :compensation, only: [:new, :create], shallow: :true
+    resources :compensations, only: [:new, :create], shallow: :true
   end
   resources :projects, only: [:index, :show]
   resources :users, only: :show
