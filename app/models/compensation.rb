@@ -1,4 +1,4 @@
 class Compensation < ApplicationRecord
   belongs_to :project
-  has_one :trip
+  has_many :trips
 end
