@@ -1,0 +1,31 @@
+<div class="container">
+  <% @trips.each do |trip| %>
+    <% if trip.compensation.nil? %>
+      <ul class="list-inline">
+        <li><strong>From:</strong> Paris <%= trip.start_address %></li>
+        <li><strong>To:</strong> Bordeaux <%= trip.destination_address %></li>
+        <li><strong>Véhicule:</strong> <%= trip.transportation.category%></li>
+        <li><strong>Km:</strong> <%= km_total(trip.km, trip.number) %> en <%= trip.number %> trajets</li>
+        <li><strong>Co2 à clean:</strong> <%= trip.transportation.emission %> CO2 par km</li>
+      </ul>
+    <% else %>
+      <ul class="list-inline">
+        <li>---------------</li>
+        <li><strong>From:</strong> Paris <%= trip.start_address %></li>
+        <li><strong>To:</strong> Bordeaux <%= trip.destination_address %></li>
+        <li><strong>Véhicule:</strong> <%= trip.transportation.category%></li>
+        <li><strong>Km:</strong> <%= km_total(trip.km, trip.number) %> en <%= trip.number %> trajets</li>
+        <li><strong>Co2 à clean:</strong> <%= trip.transportation.emission %> CO2 par km</li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
+
+  <!-- def compensated?(trip) -->
+<!-- trip.compensation.project.name -->
+
+<!-- <Trip id: 9, km: 466.0, number: 1, start_address: nil, destination_address: nil,
+user_id: 6, transportation_id: 4,
+compensation_id: nil,
+created_at: "2017-11-22 09:57:41",
+updated_at: "2017-11-22 09:57:41"> -->
