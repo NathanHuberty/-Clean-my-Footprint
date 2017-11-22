@@ -4,4 +4,5 @@ class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :carbon, presence: true
+  has_attachments :photos, maximum: 5
 end
