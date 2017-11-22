@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="travels-to-clean">
+      <div class="list-inline">
+        <% @trips.each do |trip| %>
+          <% if trip.compensation.nil? %>
+          <div class="travel">
+            <div><p>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
+            <div><p><%= trip.transportation.category%></p></div>
+            <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
+            <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
+          </div>
+          <br>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+<div class="container">
+  <div class="travels-cleaned">
+    <div class="list-inline">
+      <% @trips.each do |trip| %>
+        <% if trip.compensation.present? %>
+        <div class="travel">
+          <div><p>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
+          <div><p><%= trip.transportation.category%></p></div>
+          <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
+          <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
+          <div><strong>Compensated with:</strong> <%= trip.compensation.project.name%></div>
+        </div>
+        <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+<!--
+
+
+
+
+
+
+    <ul class="rolldown-list" id="myList">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li>Four</li>
+      <li>Five</li>
+      <li>Six</li>
+      <li>Seven</li>
+      <li>Eight</li>
+    </ul>
+
+    <button id="btnReload">Reload</button>
+
+
+
+  <%= content_tag :after_js do  %>
+    <script>
+        // Increments the delay on each item.
+      $('.rolldown-list li').each(function () {
+      var delay = ($(this).index() / 4) + 's';
+      $(this).css({
+        webkitAnimationDelay: delay,
+        mozAnimationDelay: delay,
+        animationDelay: delay
+      });
+      });
+
+      $('#btnReload').click(function () {
+      $('#myList').removeClass('rolldown-list');
+      setTimeout(function () {
+        $('#myList').addClass('rolldown-list');
+      }, 1);
+      });
+    </script>
+  <% end %> -->
+</div>
