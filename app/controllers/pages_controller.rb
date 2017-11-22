@@ -6,8 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
 
-    #trips/new
-
+    #trips/create
     #trips/index
     # @trips_to_clean = Trip.where(user: current_user && compensation )
     @trips = Trip.where(user: current_user)
