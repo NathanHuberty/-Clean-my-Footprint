@@ -1,31 +1,32 @@
-<div class="container">
-  <div class="travels-to-clean">
-    <% @trips.each do |trip| %>
-      <% if trip.compensation.nil? %>
-        <ul class="list-inline">
-          <li>Paris<%= trip.start_address %></li>
-          <li> - Bordeaux<%= trip.destination_address %></li>
-          <li><%= trip.transportation.category%></li>
-          <li><%= km_total(trip.km, trip.number) %>km en <%= trip.number %> trajets</li>
-          <li><strong>Co2:</strong> <%= trip.transportation.emission * km_total(trip.km, trip.number) %>CO2</li>
 
-        </ul>
-      <% end %>
-    <% end %>
-  </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="travels-to-clean">
+      <% @trips.each do |trip| %>
+        <% if trip.compensation.nil? %>
+          <ul class="list-inline travel-infos">
+            <li>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></li>
+            <li><%= trip.transportation.category%></li>
+            <li><%= km_total(trip.km, trip.number) %>km en <%= trip.number %> trajets</li>
+            <li><strong>Co2:</strong> <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>CO2</li>
 
-  <div class="travels-cleaned">
-    <% @trips.each do |trip| %>
-      <% if trip.compensation.present? %>
-        <ul class="list-inline">
-          <li>Paris<%= trip.start_address %></li>
-          <li> - Bordeaux<%= trip.destination_address %></li>
-          <li><%= trip.transportation.category%></li>
-          <li><%= km_total(trip.km, trip.number) %>km en <%= trip.number %> trajets</li>
-          <li><strong>Co2:</strong> <%= trip.transportation.emission * km_total(trip.km, trip.number) %>CO2</li>
-          <li><strong>Compensation:</strong> <%= trip.compensation.project.name%></li>
-        </ul>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div class="travels-cleaned">
+      <% @trips.each do |trip| %>
+        <% if trip.compensation.present? %>
+          <ul class="list-inline travel-infos">
+            <li>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></li>
+            <li><%= trip.transportation.category%></li>
+            <li><%= km_total(trip.km, trip.number) %>km en <%= trip.number %> trajets</li>
+            <li><strong>Co2:</strong> <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>CO2</li>
+            <li><strong>Compensated with:</strong> <%= trip.compensation.project.name%></li>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
