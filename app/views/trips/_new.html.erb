@@ -1,4 +1,13 @@
-Test
-<%= @trip %>
+<h3>Rentrez votre trajet</h3>
 
-<%=  %>
+<%= simple_form_for @trip do |f| %>
+
+  <%= f.input :start_address, error: 'Username is mandatory, please specify one' %>
+  <%= f.input :destination_address, error: 'Username is mandatory, please specify one' %>
+  <%= f.input :transportation, hint: 'No special characters.' %>
+  <%= f.input :number, label: 'Recurrence', placeholder: '1' %>
+  <%= f.button :submit %>
+<% end %>
+
+ajouter l'aller-retour
+current_user = user
