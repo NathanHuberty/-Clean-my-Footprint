@@ -26,7 +26,7 @@
           <div><p><%= trip.transportation.category%></p></div>
           <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
           <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
-          <div><strong>Compensated with:</strong> <%= trip.compensation.project.name%></div>
+          <div><p><%= trip.compensation.project.name%></p></div>
         </div>
         <br>
         <% end %>

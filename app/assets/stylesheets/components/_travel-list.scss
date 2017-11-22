@@ -11,9 +11,16 @@ margin: 50px;
 }
 
 .travel {
-display: flex;
-align-items: center;
-justify-content: space-around;
+  background-color: $dark_green;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  p {
+    color: $white;
+    margin: 0;
+    padding: 10px 10px;
+  }
 }
 
 
