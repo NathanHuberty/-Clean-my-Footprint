@@ -74,7 +74,7 @@ puts "Projects created"
 
 # creating trips, first 10 trips are not compensated!
 User.all.each do |user|
-  rand(10).times do
+  10.times do
     trip = Trip.new(user: user, transportation: Transportation.all.sample, km: rand(20..1500), number: rand(1..10) )
     trip.save!
   end
