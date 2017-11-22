@@ -1,4 +1,65 @@
+<div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel" style="height:50vh;">
 
-<% @project.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
+    <!-- Carousel indicators -->
+
+    <ol class="carousel-indicators">
+
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+
+    </ol>
+
+    <!-- Carousel items -->
+
+    <div class="carousel-inner">
+
+        <div class="item active" style="background-image: url(<%= cl_image_path @project.photos[0].path, crop: :thumb, gravity: :center %>)">
+
+            <%#= cl_image_tag @project.photos[0].path, width: 300, height: 200, crop: :fill %>
+        </div>
+
+        <% @project.photos[1..-1].each do |photo| %>
+          <div class="item" style="background-image: url(<%= cl_image_path photo.path%>)"></div>
+        <% end %>
+
+    </div>
+
+    <!-- Carousel nav -->
+
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+
+        <span class="glyphicon glyphicon-chevron-left"></span>
+
+    </a>
+
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+
+        <span class="glyphicon glyphicon-chevron-right"></span>
+
+    </a>
+
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h1><%= @project.name %></h1>
+      <p><%= @project.description %></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
