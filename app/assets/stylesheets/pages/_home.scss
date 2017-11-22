@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+.banner {
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
+    url("https://static.pexels.com/photos/34950/pexels-photo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  color: $white;
+}
