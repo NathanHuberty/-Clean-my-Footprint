@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
   resources :projects, only: :show
   resources :users, only: :show
+
+  mount Attachinary::Engine => "/attachinary"
 end
