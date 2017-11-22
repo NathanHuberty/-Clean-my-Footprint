@@ -1,15 +1,17 @@
 
+<div class="form-container">
 
 <h3>Rentrez votre trajet</h3>
 
 <%= simple_form_for @trip do |f| %>
 
-  <%= f.input :start_address, error: 'Username is mandatory, please specify one' %>
-  <%= f.input :destination_address, error: 'Username is mandatory, please specify one' %>
-  <%= f.input :transportation, hint: 'No special characters.' %>
-  <%= f.input :number, label: 'Recurrence', placeholder: '1' %>
+  <%= f.input :start_address, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
+  <%= f.input :destination_address, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée'%>
+  <%= f.input :transportation, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+  <%= f.input :number, label: 'Nombre de voyages', placeholder: '1' %>
   <%= f.button :submit %>
 <% end %>
 
 ajouter l'aller-retour
 current_user = user
+</div>
