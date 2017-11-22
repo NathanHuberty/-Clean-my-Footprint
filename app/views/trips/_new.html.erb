@@ -5,7 +5,7 @@
 
   <%= f.input :start_address, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
   <%= f.input :destination_address, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée'%>
-  <%= f.input :transportation, collection: Transportation::TRANSPORTS, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+  <%= f.association :transportation, collection: Transportation::TRANSPORTS, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
   <%= f.input :number, label: 'Nombre de voyages', placeholder: '1' %>
   <%= f.button :submit %>
 <% end %>

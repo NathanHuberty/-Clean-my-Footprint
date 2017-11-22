@@ -5,13 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
     #trips/create
     #trips/index
     # @trips_to_clean = Trip.where(user: current_user && compensation )
     @trips = Trip.where(user: current_user)
     #compensations/new
-
     #projects/index
   end
 
@@ -20,4 +18,6 @@ class PagesController < ApplicationController
   def create_trip
     @trip = Trip.new
   end
+
+
 end
