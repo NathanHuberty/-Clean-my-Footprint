@@ -227,6 +227,7 @@ DEPENDENCIES
   attachinary!
   autoprefixer-rails
   bootstrap-sass
+  cloudinary
   coffee-rails
   devise
   faker
