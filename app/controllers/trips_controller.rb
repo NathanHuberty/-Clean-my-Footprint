@@ -5,7 +5,11 @@ class TripsController < ApplicationController
     #   t == trip_params[:transportation]
     # }
     @trip = Trip.new(trip_params)
-    raise
+    # if @trip.save!
+    #   redirect_to dashboard_path
+    # else
+    #   render :new
+    # end
   end
 
   def trip_params
