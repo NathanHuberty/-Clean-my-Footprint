@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def dashboard
 
     #trips/new
-
+    @trip = Trip.new
     #trips/index
 
     #compensations/new
