@@ -11,7 +11,7 @@ Project.destroy_all
 Transportation.destroy_all
 User.destroy_all
 
-
+include CalculationHelper
 
 puts "Creating seed"
 
@@ -72,7 +72,7 @@ end
 puts "Projects created"
 
 
-# creating trips, last 5 trips are not compensated!
+# creating trips, first 10 trips are not compensated!
 User.all.each do |user|
   rand(1..5).times do
     trip = Trip.new(user: user, transportation: Transportation.all.sample, km: rand(20..1500), number: rand(1..10) )
@@ -83,8 +83,17 @@ end
 puts "Trips created"
 
 # creating compensations
-Trip.all[0..-5].each do |trip|
-  comp = Compensation.create!(project: Project.all.sample, amount: rand(10..450))
+Trip.all[9..-1].each do |trip|
+  comp = Compensation.new
+  comp.project =  Project.all.sample
+  # calculating total co2 emission and translate it into an amount
+  total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
+
+  comp.amount = total_to_pay
+  comp.save!
+  puts "km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
+  }"
+  puts total_to_pay
   trip.update!(compensation: comp)
 end
 
