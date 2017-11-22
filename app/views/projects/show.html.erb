@@ -1,3 +1,6 @@
+
+
+
 <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel" style="height:50vh;">
 
     <!-- Carousel indicators -->
@@ -22,7 +25,6 @@
         <% @project.photos[1..-1].each do |photo| %>
           <div class="item" style="background-image: url(<%= cl_image_path photo.path%>)"></div>
         <% end %>
-
     </div>
 
     <!-- Carousel nav -->
@@ -47,6 +49,8 @@
       <h1><%= @project.name %></h1>
       <p><%= @project.description %></p>
     </div>
+
+
   </div>
 
   <div class="row">
