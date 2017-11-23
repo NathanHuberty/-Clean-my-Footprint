@@ -8,6 +8,13 @@
   margin-top: 10px;
   display: block;
   justify-content: center;
+
+}
+
+.project-card:hover{
+  .card-title, .card-description {
+    display:none;
+  }
 }
 
 .card-category {
@@ -21,11 +28,8 @@
 
 .card-title {
   font-size: 18px;
-  /*top: 30px;*/
   text-align: center;
-  margin:0
-  /*position: absolute;*/
-  /*left:6%;*/
+  margin:0;
 }
 .card-description {
   font-size: 14px;
@@ -44,6 +48,8 @@
   opacity: 0;
 }
 .card-link:hover {
-  opacity: 0.1;
+  opacity: 0.6;
+  text-decoration: none;
+  color:#FFF;
+  transition: 0.5s ease-in-out;
 }
-

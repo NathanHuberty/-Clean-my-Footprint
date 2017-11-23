@@ -2,44 +2,27 @@
 
 
 <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel" style="height:50vh;">
-
     <!-- Carousel indicators -->
-
     <ol class="carousel-indicators">
-
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-
-
     </ol>
-
     <!-- Carousel items -->
-
     <div class="carousel-inner">
-
-        <div class="item active" style="background-image: url(<%= cl_image_path @project.photos[0].path, crop: :thumb, gravity: :center %>)">
-        </div>
-
-        <% @project.photos[1..-1].each do |photo| %>
-          <div class="item" style="background-image: url(<%= cl_image_path photo.path%>)"></div>
-        <% end %>
+      <div class="item active" style="background-image: url(<%= cl_image_path @project.photos[0].path, crop: :thumb, gravity: :center %>)">
+      </div>
+      <% @project.photos[1..-1].each do |photo| %>
+        <div class="item" style="background-image: url(<%= cl_image_path photo.path%>)"></div>
+      <% end %>
     </div>
-
     <!-- Carousel nav -->
-
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-
         <span class="glyphicon glyphicon-chevron-left"></span>
-
     </a>
-
     <a class="carousel-control right" href="#myCarousel" data-slide="next">
-
         <span class="glyphicon glyphicon-chevron-right"></span>
-
     </a>
-
 </div>
 
 <div class="container" style= "margin-bottom: 20px">
@@ -48,34 +31,31 @@
       <h1><%= @project.name %></h1>
       <p><%= @project.description %></p>
     </div>
-
-
   </div>
-
   <div class="row">
-
       <% Project.all.each do |project| %>
       <% if project != @project %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <!--card-->
-        <% if !(project.photos.empty?) %>
-          <div class="project-card text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path project.photos[0].path %>);">
-          <!--<div class="card-category">Planting trees</div>-->
-          <div class="placeholder" style="height:18%"></div>
-          <div class="card-title">
-            <h3><%= project.name %></h3>
-          </div>
-          <div class="card-description">
-            <p><%= project.address %></p>
-          </div>
-          <%= link_to "", project_path(project), class: "card-link"  %>
-          </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <!--card-->
+          <% if !(project.photos.empty?) %>
+            <div class="project-card text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path project.photos[0].path %>);">
+            <!--<div class="card-category">Planting trees</div>-->
+            <div class="placeholder" style="height:18%"></div>
+            <div class="card-title">
+              <h3><%= project.name %></h3>
+            </div>
+            <div class="card-description">
+              <p><%= project.address %></p>
+            </div>
+            <%= link_to project , class: "card-link" do %>
+              <h4>Hidden text</h4><p><%= project.description[0..86] %>...</p>
+            <% end %>
+            </div>
+        <% end %>
+        <!--card end-->
+        </div>
       <% end %>
-      <!--card end-->
-
-      </div>
-      <% end %>
-      <% end %>
+    <% end %>
   </div>
 </div>
 
