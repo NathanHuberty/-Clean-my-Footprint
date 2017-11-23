@@ -1,11 +1,15 @@
-<div class="form-container">
-
+<div class="form-container" id="trip-form">
   <%= render 'trips/new', trip: @trip %>
 </div>
+
 <div class="wrapper">
   <div class="container">
-    <%= render 'trips/index' %>
-    <%= render 'projects/index' %>
+    <div id="mytrips">
+      <%= render 'trips/index' %>
+    </div>
+    <div id="projects">
+      <%= render 'projects/index' %>
+    </div>
   </div>
 </div>
 
