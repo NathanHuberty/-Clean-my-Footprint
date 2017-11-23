@@ -89,11 +89,11 @@ photo_urls_carbon = [
 
 # creating projects
 project_attributes= [
-  { name: "On Tree Planted", address: "Malaisie", carbon: 1, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_one_tree },
-  { name: "Plant a Billion Trees", address: "Chine", carbon: 2, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_billion_trees },
-  { name: "Trees for the Future", address: "Europe", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_future },
-  { name: "International Tree Foundation", address: "Tanzanie", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_international },
-  { name: "Community Carbon Trees", address: "Indie", carbon: 4, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_carbon }
+  { name: "On Tree Planted", address: "Malaisie", carbon: 1, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_one_tree, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
+  { name: "Plant a Billion Trees", address: "Chine", carbon: 2, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_billion_trees, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
+  { name: "Trees for the Future", address: "Europe", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_future, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
+  { name: "International Tree Foundation", address: "Tanzanie", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_international, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
+  { name: "Community Carbon Trees", address: "Indie", carbon: 4, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_carbon, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" }
 ]
 
 project_attributes.each do |attr|

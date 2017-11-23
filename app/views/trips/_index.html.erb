@@ -44,8 +44,8 @@
         <div class="modal-body">
           <ul class="list-inline">
             <% @projects.each do |project| %>
-              <li>
-                <%= project.name %>
+              <li class="logo-project">
+                <%= image_tag project.logo %>
               </li>
             <% end %>
           </ul>
