@@ -1,0 +1,47 @@
+
+
+  <div class="row">
+  <div class="nopadding">
+        <div style="padding-right: 64px; padding-left: 64px;">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <!--card-->
+          <% if !(@projects[0].photos.empty?) %>
+            <div class="project-card-dashboard-starter text-center" style="background-color: #3D6658;">
+              <div class="placeholder" style="height:15%"></div>
+              <div class="card-title">
+                <h3>Choisissez une association</h3>
+              </div>
+            </div>
+        <% end %>
+        <!--card end-->
+        </div>
+
+    <% Project.all.each do |project| %>
+      <% if project != @project %>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <!--card-->
+          <% if !(project.photos.empty?) %>
+            <div class="project-card-dashboard text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path project.photos[0].path %>);">
+            <!--<div class="card-category">Planting trees</div>-->
+            <div class="placeholder" style="height:15%"></div><!--changed-->
+            <div class="card-title">
+              <h3><%= project.name %></h3>
+            </div>
+            <div class="card-description">
+              <p><%= project.address %></p>
+            </div>
+            <%= link_to project , class: "card-link" do %>
+              <h4>Hidden text</h4><p><%= project.description[0..98] %>...</p><!--cahnged-->
+            <% end %>
+            </div>
+        <% end %>
+        <!--card end-->
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+  </div>
+
+</div>
+

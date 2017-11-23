@@ -1,0 +1,26 @@
+.project-card-dashboard, .project-card-dashboard-starter {
+  height: 175px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin:0;
+  display: block;
+  justify-content: center;
+  width:100%;
+  padding:5px;/*added*/
+}
+
+.nopadding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.project-card-dashboard:hover{
+  .card-title, .card-description {
+    display:none;
+  }
+}
