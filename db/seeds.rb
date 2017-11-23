@@ -54,14 +54,44 @@ end
 
 puts "Transportations created"
 
+#mangrove
+photo_urls_one_tree = [
+"http://4.bp.blogspot.com/-iCmIz42m_bc/U1SXjmUM2mI/AAAAAAAABfU/K0ttS54wsBA/s1600/mangrove.jpg",
+"http://vivre-en-thailande.com/files/2016/04/mangrove-p990.1280x814.jpg",
+"http://cleanmalaysia.com/wp-content/uploads/2016/02/mangrove.jpg"
+]
+#chine
+photo_urls_billion_trees = [
+  "http://redpandanetwork.org/blog/wp-content/uploads/2009/12/RPN-Nepal-AGebauer-03.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/1_tianzishan_wulingyuan_zhangjiajie_2012.jpg/1200px-1_tianzishan_wulingyuan_zhangjiajie_2012.jpg",
+  "http://www.brotherearth.com/en/wp-content/uploads/sites/3/2016/07/gujo_1.jpg"
+]
+#europe
+photo_urls_future = [
+  "https://d5gyvv73sl4au.cloudfront.net/assets/images/project/peru.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/d/df/Beech_forest_vtacnik.jpg",#
+  "https://ssl.c.photoshelter.com/img-get2/I0000QlphWjjn9YU/fit=1000x750/European-lynx-MEUL136.jpg"
+]
+#africa
+photo_urls_international = [
+  "http://www.maasaichildreneducation.org/wp-content/uploads/2014/03/4431-1.jpg",#
+  "http://internationaltreefoundation.org/wp-content/uploads/2017/05/Pupils-participating-in-tree-planting.jpg",
+  "http://topfarmer.co.ke/wp-content/uploads/2017/03/flegt2.jpg"#
+]
+#indie
+photo_urls_carbon = [
+ "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
+ "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
+ "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
+]
 
 # creating projects
 project_attributes= [
-  { name: Faker::Address.country, carbon: 1, description: Faker::Lorem.paragraph },
-  { name: Faker::Address.country, carbon: 2, description: Faker::Lorem.paragraph },
-  { name: Faker::Address.country, carbon: 3, description: Faker::Lorem.paragraph },
-  { name: Faker::Address.country, carbon: 3, description: Faker::Lorem.paragraph },
-  { name: Faker::Address.country, carbon: 4, description: Faker::Lorem.paragraph }
+  { name: "On Tree Planted", address: "Malaisie", carbon: 1, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_one_tree },
+  { name: "Plant a Billion Trees", address: "Chine", carbon: 2, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_billion_trees },
+  { name: "Trees for the Future", address: "Europe", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_future },
+  { name: "International Tree Foundation", address: "Tanzanie", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_international },
+  { name: "Community Carbon Trees", address: "Indie", carbon: 4, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_carbon }
 ]
 
 project_attributes.each do |attr|
