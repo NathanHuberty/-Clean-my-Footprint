@@ -31,6 +31,7 @@
   </div>
 
   <!-- Modal -->
+  <div class="container">
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -41,22 +42,22 @@
           </button>
         </div>
         <div class="modal-body">
-          <ul class="list-inline">
-            <% @projects.each do |project| %>
-              <li>
-                <%= image_tag project.logo, class:'logo-project' %>
-              </li>
-            <% end %>
-          </ul>
+          <div class="logo-projects">
+            <div class="row">
+              <% @projects.each do |project| %>
+                <div class="col-xs-6">
+                  <div>
+                    <%= image_tag project.logo, class:'logo-project' %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
       </div>
     </div>
   </div>
-
+</div>
 
 <!--
     <ul class="rolldown-list" id="myList">
