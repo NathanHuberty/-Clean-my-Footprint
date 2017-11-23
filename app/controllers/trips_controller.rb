@@ -5,6 +5,7 @@ class TripsController < ApplicationController
     #   t == trip_params[:transportation]
     # }
     @trip = Trip.new(trip_params)
+    # helper km
     # if @trip.save!
     #   redirect_to dashboard_path
     # else

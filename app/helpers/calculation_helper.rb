@@ -3,7 +3,11 @@ module CalculationHelper
       (km * emission * times) / carbon
   end
 
-  def km_total(km, trajet)
-    km * trajet
+  def km
+    # take distance from google
+  end
+
+  def km_total(km, nb_of_trips)
+    km * nb_of_trips
   end
 end
