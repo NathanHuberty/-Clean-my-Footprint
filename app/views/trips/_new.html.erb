@@ -1,15 +1,21 @@
 
 <h3>Rentrez votre trajet</h3>
 
-<%= simple_form_for @trip do |f| %>
+<%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
 
-  <%= f.input :start_address, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
-  <%= f.input :destination_address, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
-  <%= f.association :transportation, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+  <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
+  <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
+  <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
   <%= f.input :number, label: 'Nombre de voyages', placeholder: '1' %>
   <%= f.button :submit %>
 <% end %>
 
+
 ollection: Transportation::TRANSPORTS
 ajouter l'aller-retour
 current_user = user
+
+<!-- iframe footprint -->
+<!-- <iframe width="710" height="1300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx"></iframe>
+
+<iframe width="710" height="750" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx?c=flight"></iframe> -->
