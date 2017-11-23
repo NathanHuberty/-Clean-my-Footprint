@@ -42,9 +42,11 @@ puts "Users created"
 
 # creating means of transportation
 transportation_attributes = [
-  { category: "Voiture", emission: 0.1181 },
-  { category: "Avion", emission: 0.115 },
-  { category: "Train", emission: 0.0602 }
+  { category: "Voiture", emission: 0.1181, icon: "fa-car" },
+  { category: "Avion", emission: 0.115, icon: "fa-plane" },
+  { category: "Transport en commun", emission: 0.115, icon: "fa-bus" },
+  { category: "Moto", emission: 0.115, icon: "fa-motorcycle" },
+  { category: "Train", emission: 0.0602, icon: "fa-train" }
 ]
 
 transportation_attributes.each do |attr|

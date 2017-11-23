@@ -1,12 +1,11 @@
 <div class="wrapper">
   <div class="container">
-    <div class="travels-to-clean">
+    <div class="travels">
       <div class="list-inline">
         <% @trips.each do |trip| %>
           <% if trip.compensation.nil? %>
-          <div class="travel">
-            <div><p>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
-            <div><p><%= trip.transportation.category%></p></div>
+          <div class="travels-to-clean travel">
+            <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>     Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
             <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
             <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
           </div>
@@ -17,16 +16,14 @@
     </div>
 
 <div class="container">
-  <div class="travels-cleaned">
+  <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
         <% if trip.compensation.present? %>
-        <div class="travel">
-          <div><p>Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
-          <div><p><%= trip.transportation.category%></p></div>
-          <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
-          <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
+        <div class="travels-cleaned travel">
+          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>     Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
           <div><p><%= trip.compensation.project.name%></p></div>
+          <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
         </div>
         <br>
         <% end %>
@@ -35,13 +32,10 @@
   </div>
 
 
+
+
+
 <!--
-
-
-
-
-
-
     <ul class="rolldown-list" id="myList">
       <li>One</li>
       <li>Two</li>

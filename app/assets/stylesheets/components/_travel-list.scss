@@ -1,21 +1,16 @@
 .wrapper {
   background-color: $white;
 }
-.travels-to-clean {
-margin: 50px;
-
-}
-
-.travels-cleaned {
-margin: 50px;
+.travels{
+  margin: 50px;
 }
 
 .travel {
-  background-color: $dark_green;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 10px;
   p {
     color: $white;
     margin: 0;
@@ -23,6 +18,13 @@ margin: 50px;
   }
 }
 
+.travels-to-clean {
+  background-color: $red;
+}
+
+.travels-cleaned {
+  background-color: $dark_green;
+}
 
 //
 // .rolldown-list {
