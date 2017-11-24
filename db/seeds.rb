@@ -26,10 +26,34 @@ user_attributes = [
   # { first_name: "A", last_name: "B", email: "louis@clean.com", password: "12345678" }
 ]
 
-user_attributes.each do |attr|
-  user = User.new(attr)
-  user.save!
-end
+user = User.new(user_attributes)
+user.save!
+trip1 = Trip.create!(
+  user: user,
+  start_address: "Paris",
+  destination_address: "Bordeaux",
+  transportation: "Train",
+  km: 550,
+  number: 1
+)
+
+trip2 = Trip.create!(
+  user: user,
+  start_address: "12 avenue Thiers, 33100 Bordeaux",
+  destination_address: "64 rue de la Santé 75014 Paris",
+  transportation: "Avion",
+  km: 510,
+  number: 2
+)
+
+trip3 = Trip.create!(
+  user: user,
+  start_address: "Bordeaux",
+  destination_address: "Manciet",
+  transportation: "Moto",
+  km: 150,
+  number: 2
+)
 
 # creating users with radom attributes
 # 8.times do
@@ -110,6 +134,7 @@ puts "Projects created"
 
 
 # creating trips, first 10 trips are not compensated!
+
 User.all.each do |user|
   10.times do
     trip = Trip.new(user: user, transportation: Transportation.all.sample, km: rand(20..1500), number: rand(1..10) )
