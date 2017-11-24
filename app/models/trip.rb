@@ -6,4 +6,6 @@ class Trip < ApplicationRecord
   validates :number, numericality: { greater_than: 0 }
   # validates :start_address, length: { minimum: 1 }
   # validates :destination_address, length: { minimum: 1 }
+
+  attr_accessor :return
 end
