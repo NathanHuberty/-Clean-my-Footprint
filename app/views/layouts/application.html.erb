@@ -12,6 +12,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= render "shared/footer" %>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
     <%= javascript_include_tag 'application' %>
     <%= yield :after_js %>
