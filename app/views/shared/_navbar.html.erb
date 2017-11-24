@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to dashboard_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo_white.png" %>
   <% end %>
 
@@ -10,10 +10,11 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Add a trip", "#trip-form", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My trips", "#mytrips", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Projects", "#projects", class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <% if current_page?("/dashboard") %>
+        <%= link_to "Add a trip", "#trip-form", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "My trips", "#mytrips", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Projects", "#projects", class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
