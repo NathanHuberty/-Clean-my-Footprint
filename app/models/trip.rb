@@ -6,4 +6,8 @@ class Trip < ApplicationRecord
   validates :number, numericality: { greater_than: 0 }
   # validates :start_address, length: { minimum: 1 }
   # validates :destination_address, length: { minimum: 1 }
+
+  scope :pending, -> { where(compensation_id: nil) }
+  scope :clean, -> { where.not(compensation_id: nil) }
+
 end
