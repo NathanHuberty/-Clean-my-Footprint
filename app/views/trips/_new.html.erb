@@ -3,11 +3,11 @@
 <h3>Rentrez votre trajet</h3>
 
 <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
-  <%#= f.input :return, as: :boolean %>
+  <%#= f.input :num_return, as: :boolean %>
   <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
   <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
   <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
-  <%= f.collection_radio_buttons :return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
+  <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
   <br>
   <%= f.collection_radio_buttons :recurrent, [[true, 'Récurrent'] ,[false, 'Occasionnel']], :first, :last %>
   <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
