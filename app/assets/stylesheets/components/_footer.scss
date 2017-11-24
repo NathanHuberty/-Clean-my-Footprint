@@ -1,0 +1,23 @@
+.footer {
+  align-items: center;
+  background: $dark_green;
+  color: $light-gray;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 50px;
+  a {
+    color: inherit;
+  }
+
+  p, ul {
+    margin: 0;
+  }
+
+  li:first-child {
+    margin: 0 50px 0 0;
+    padding: 0;
+  }
+}
