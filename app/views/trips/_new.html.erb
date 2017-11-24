@@ -11,8 +11,26 @@
   <br>
   <%= f.collection_radio_buttons :recurrent, [[true, 'Récurrent'] ,[false, 'Occasionnel']], :first, :last %>
   <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
-  <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %> fois par <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
-  <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+  <!--recurrent trip form-->
+  <div class="row">
+    <div class="col-sm-12 col-md-5">
+      <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
+    </div>
+    <div class="col-sm-12 col-md-2">
+      <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
+      fois par
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <div style="padding-left: 16px;">
+          <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+        </div>
+      </div>
+    </div>
+  </div>
   <%= f.button :submit %>
 <% end %>
 
