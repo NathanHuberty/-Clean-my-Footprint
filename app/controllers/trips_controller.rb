@@ -4,7 +4,17 @@ class TripsController < ApplicationController
 
   def create
     raise
-    @trip = Trip.new(trip_params)
+    params[:trip][:return]
+    params[:trip][:recurrence]
+
+    # if recurrence : number = return(1 ou 2) * @trip.km * number of trips
+    # if occasionnel: number = return.to_i(1 ou 2) * number of trips
+
+
+
+
+
+    @trip = Trip.new(trip_params, number: )
     @trip.user = current_user
     case @trip.transportation.category
     when "Voiture" || "Avion" || "Moto"
