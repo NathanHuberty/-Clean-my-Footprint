@@ -16,7 +16,7 @@ include CalculationHelper
 puts "Creating seed"
 
 user_attributes = [
-  { first_name: "A", last_name: "B", email: "nathan@clean.com", password: "12345678" }
+  { first_name: "Nathan", last_name: "Huberty", email: "nathan@clean.com", password: "12345678" }
   # { first_name: "A", last_name: "B", email: "reka@clean.com", password: "12345678" },
   # { first_name: "A", last_name: "B", email: "louis@clean.com", password: "12345678" }
 ]
@@ -42,12 +42,13 @@ puts "Users created"
 
 # creating means of transportation
 transportation_attributes = [
-  { category: "Voiture", emission: 0.1181, icon: "fa-car" },
-  { category: "Avion", emission: 0.115, icon: "fa-plane" },
-  { category: "Transport en commun", emission: 0.115, icon: "fa-bus" },
+  { category: "Voiture", emission: 0.118, icon: "fa-car" },
+  { category: "Avion", emission: 0.083, icon: "fa-plane" },
+  { category: "Transport en commun", emission: 0.004, icon: "fa-bus" },
   { category: "Moto", emission: 0.115, icon: "fa-motorcycle" },
-  { category: "Train", emission: 0.0602, icon: "fa-train" }
+  { category: "Train", emission: 0.012, icon: "fa-train" }
 ]
+# plane : for long trips it's 0.083, for short trips 0.117
 
 transportation_attributes.each do |attr|
   transport = Transportation.new(attr)
@@ -89,10 +90,10 @@ photo_urls_carbon = [
 
 # creating projects
 project_attributes= [
-  { name: "On Tree Planted", address: "Malaisie", carbon: 1, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_one_tree, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
-  { name: "Plant a Billion Trees", address: "Chine", carbon: 2, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_billion_trees, logo: "http://static.bestfreewebresources.com/wp-content/uploads/2012/01/tree-logo-design-34.jpg" },
-  { name: "Trees for the Future", address: "Europe", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_future, logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
-  { name: "International Tree Foundation", address: "Tanzanie", carbon: 3, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_international, logo: "http://gyr.fortlauderdale.gov/Home/ShowImage?id=2024&t=635657287021200000" }
+  { name: "On Tree Planted", address: "Malaisie", carbon: 200, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_one_tree, logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
+  { name: "Plant a Billion Trees", address: "Chine", carbon: 120, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_billion_trees, logo: "http://static.bestfreewebresources.com/wp-content/uploads/2012/01/tree-logo-design-34.jpg" },
+  { name: "Trees for the Future", address: "Europe", carbon: 60, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_future, logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
+  { name: "International Tree Foundation", address: "Tanzanie", carbon: 150, description: Faker::Lorem.paragraph(8, false, 2), photo_urls: photo_urls_international, logo: "http://gyr.fortlauderdale.gov/Home/ShowImage?id=2024&t=635657287021200000" }
 ]
 
 project_attributes.each do |attr|
