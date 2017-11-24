@@ -1,4 +1,17 @@
 
+<%= form_for @trip do |f| %>
+  <%= f.collection_radio_buttons :options, [[true, 'Yes'] ,[false, 'No']], :first, :last %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
     <div class="travels">
       <div class="list-inline">
         <% @trips.each do |trip| %>
@@ -13,6 +26,9 @@
         <% end %>
       </div>
     </div>
+
+
+
 
 <div class="container">
   <div class="travels">
