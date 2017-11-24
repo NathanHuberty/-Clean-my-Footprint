@@ -46,9 +46,10 @@
             <div class="row">
               <% @projects.each do |project| %>
                 <div class="col-xs-6">
-                  <div>
+                  <button class="bouton-logo">
+                    <%#= link_to '', trip_compensations_path(@trip) %>
                     <%= image_tag project.logo, class:'logo-project' %>
-                  </div>
+                  </button class="bouton-logo">
                 </div>
               <% end %>
             </div>
@@ -95,4 +96,3 @@
       });
     </script>
   <% end %> -->
-
