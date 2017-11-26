@@ -6,6 +6,6 @@ class Project < ApplicationRecord
   validates :carbon, presence: true
   validates :address, presence: true, length: { minimum: 3 }
   has_attachments :photos, maximum: 5
-  #geocoded_by :address
-  #after_validation :geocode
+  # geocoded_by :address
+  # after_validation :geocode
 end

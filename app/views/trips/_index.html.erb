@@ -49,7 +49,7 @@
       <% @trips.each do |trip| %>
         <% if trip.compensation.nil? %>
         <button class="travels-to-clean travel" type="button"  data-toggle="modal" data-target="#exampleModal">
-          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>     Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
+          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
           <div><p><%= km_total(trip.km, trip.number) %>km</p></div>
           <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
         </button>
@@ -63,9 +63,9 @@
       <% @trips.each do |trip| %>
         <% if trip.compensation.present? %>
         <div class="travels-cleaned travel">
-          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>     Paris<%= trip.start_address %> - Bordeaux<%= trip.destination_address %></p></div>
+          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
           <div><p><%= image_tag trip.compensation.project.logo, class:'logo-project-list'%></p></div>
-          <div><p><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p></div>
+          <div><p><%= km_total(trip.km, trip.number) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€</p></div>
         </div>
         <br>
         <% end %>

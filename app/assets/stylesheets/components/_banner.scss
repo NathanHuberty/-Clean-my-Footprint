@@ -6,8 +6,9 @@
   background-position: center;
   background-repeat: no-repeat;
   color: $white;
-  height: calc(100vh - 70px);
-  // display: flex;
+  height: calc(140vh - 70px);
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
   // justify-content: space-around;
-  margin-top: 70px;
 }
