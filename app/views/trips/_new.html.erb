@@ -3,28 +3,20 @@
 <h3>Rentrez votre trajet</h3>
 
 <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
-  <%#= f.input :num_return, as: :boolean %>
   <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
   <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
   <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
   <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
   <br>
-  <%#= f.collection_radio_buttons :recurring, [[true, 'Récurrent'] ,[false, 'Occasionnel']], :first, :last %>
-  <%= f.input :occasional, as: :boolean, input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
-  <%= f.input :recurring, as: :boolean, input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
-  <!-- data: {target: "#occasional", toggle: "collapse"} -->
-  <%#= f.label :some_checkbox, class: "btn btn-primary" %>
-
-  <!-- <button class="btn btn-default" data-toggle="collapse" data-target="#occasional" type="button">
-    Occasionnel
-  </button> -->
-  <!-- <button class="btn btn-default" data-toggle="collapse" data-target="#recurring" type="button">
-    Récurrent
-  </button> -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :recurring, as: :boolean, label: "Récurrent", input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
+    </div>
+  </div>
   <br>
-  <!-- = f.input_field :some_checkbox, input_html: { style: "display: none"}, label_html: { class: "btn btn-primary"}
-  = f.input_field :some_checkbox, input_html: { style: "display: none"}, data: {target: "#recurringGift", toggle: "collapse"} -->
-
   <!--occasionnal trip form-->
   <div id="occasional" class="collapse">
     <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
@@ -56,6 +48,21 @@
 <% end %>
 
 
+<!-- form elements -->
+<%#= f.collection_radio_buttons :recurring, [[true, 'Récurrent'] ,[false, 'Occasionnel']], :first, :last %>
+
+  <!-- = f.input_field :some_checkbox, input_html: { style: "display: none"}, label_html: { class: "btn btn-primary"}
+  = f.input_field :some_checkbox, input_html: { style: "display: none"}, data: {target: "#recurringGift", toggle: "collapse"} -->
+
+<!-- data: {target: "#occasional", toggle: "collapse"} -->
+  <%#= f.label :some_checkbox, class: "btn btn-primary" %>
+
+  <!-- <button class="btn btn-default" data-toggle="collapse" data-target="#occasional" type="button">
+    Occasionnel
+  </button> -->
+  <!-- <button class="btn btn-default" data-toggle="collapse" data-target="#recurring" type="button">
+    Récurrent
+  </button> -->
 <!-- iframe footprint -->
 <!-- <iframe width="710" height="1300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx"></iframe>
 
