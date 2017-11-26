@@ -1,11 +1,8 @@
 class CompensationsController < ApplicationController
-
   def create
-    @trip = Trip.find(params[:trip_id])
     @compensation = Compensation.new(compensation_params)
-    @trip.compensation = @compensation
     if @compensation.save
-      redirect_to trip_path(@trip)
+      redirect_to dashboard_path
     else
       render 'pages/dashboard'
     end
@@ -14,6 +11,6 @@ class CompensationsController < ApplicationController
   private
 
   def compensation_params
-    params.require(:compensation).permit(:project)
+    params.require(:compensation).permit(:project_id, :trip_ids)
   end
 end

@@ -1,5 +1,50 @@
+<%= simple_form_for @compensation do |f| %>
+
 <div class="container">
   <div class="travels">
+    <div class="row">
+        <%= f.collection_radio_buttons(:trip_ids,  format_trips(Trip.pending), :first, :last) %>
+
+    </div>
+  </div>
+<!--
+  <div class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModal">
+  </div> -->
+<!-- add Event listener tick button radio => action (press button clean) -->
+<div class="container">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Choose you compensation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="logo-projects">
+          <div class="row">
+            <div class="">
+              <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
+              <%= f.button :submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<% end %>
+
+
+
+
+
+<div class="container">
+  <!-- <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
         <% if trip.compensation.nil? %>
@@ -12,7 +57,7 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+  </div> -->
   <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
@@ -29,7 +74,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="container">
+  <!-- <div class="container">
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -56,7 +101,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!--
     <ul class="rolldown-list" id="myList">
