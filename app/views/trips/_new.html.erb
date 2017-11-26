@@ -10,23 +10,37 @@
   <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
   <br>
   <%= f.collection_radio_buttons :recurrent, [[true, 'Récurrent'] ,[false, 'Occasionnel']], :first, :last %>
-  <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
-  <!--recurrent trip form-->
-  <div class="row">
-    <div class="col-sm-12 col-md-5">
-      <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
-    </div>
-    <div class="col-sm-12 col-md-2">
-      <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
-      fois par
-    </div>
-    <div class="col-sm-12 col-md-5">
-      <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
-    </div>
+  <button class="btn btn-default" data-toggle="collapse" data-target="#occasional" type="button">
+    Occasionnel
+  </button>
+  <button class="btn btn-default" data-toggle="collapse" data-target="#recurring" type="button">
+    Récurrent
+  </button>
+  = f.input_field :some_checkbox, input_html: { style: "display: none"}, label_html: { class: "btn btn-primary"}
+
+  <!--occasionnal trip form-->
+  <div id="occasional" class="collapse">
+    <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
+  </div>
+
+  <!--recurring trip form-->
+  <div id="recurring" class="collapse">
     <div class="row">
-      <div class="col-sm-12 col-md-8">
-        <div style="padding-left: 16px;">
-          <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+      <div class="col-sm-12 col-md-5">
+        <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
+      </div>
+      <div class="col-sm-12 col-md-2">
+        <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
+        fois par
+      </div>
+      <div class="col-sm-12 col-md-5">
+        <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <div style="padding-left: 16px;">
+            <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+          </div>
         </div>
       </div>
     </div>
