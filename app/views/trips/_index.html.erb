@@ -9,13 +9,8 @@
   </div>
 <!--
   <div class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModal">
-
   </div> -->
-
-
 <!-- add Event listener tick button radio => action (press button clean) -->
-
-
 <div class="container">
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -29,8 +24,10 @@
       <div class="modal-body">
         <div class="logo-projects">
           <div class="row">
-            <%= f.collection_radio_buttons :project_id, Project.all, :id, :name %>
-            <%= f.button :submit %>
+            <div class="">
+              <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
+              <%= f.button :submit %>
+            </div>
           </div>
         </div>
       </div>
