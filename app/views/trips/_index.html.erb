@@ -3,16 +3,17 @@
 <div class="container">
   <div class="travels">
     <div class="row">
-        <%= f.collection_radio_buttons(:trip_ids,  format_trips(Trip.pending), :first, :last, item_wrapper_class: "col-xs-12 filter-radio travels-to-clean travel") %>
+        <%= f.collection_radio_buttons(:trip_ids,  format_trips(Trip.pending), :first, :last) %>
 
     </div>
   </div>
+<!--
+  <div class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModal">
 
-  <button class="travels-to-clean travel" type="button"  data-toggle="modal" data-target="#exampleModal">
-
-  </button>
+  </div> -->
 
 
+<!-- add Event listener tick button radio => action (press button clean) -->
 
 
 <div class="container">
@@ -46,7 +47,7 @@
 
 
 <div class="container">
-  <div class="travels">
+  <!-- <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
         <% if trip.compensation.nil? %>
@@ -59,7 +60,7 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+  </div> -->
   <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
