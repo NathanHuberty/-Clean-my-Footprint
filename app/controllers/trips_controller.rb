@@ -4,8 +4,7 @@ class TripsController < ApplicationController
 
   def create
 
-
-    if params[:trip][:recurrent] == "true"
+    if params[:trip][:recurring] == "true"
       starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
       days_between = (Date.today - starting_date).to_i
       frequency = params[:trip][:number_per].to_i
