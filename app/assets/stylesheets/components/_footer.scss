@@ -1,8 +1,8 @@
 .footer {
+  display: flex;
   align-items: center;
   background: $dark_green;
   color: $light-gray;
-  display: flex;
   flex-wrap: wrap;
   font-size: 14px;
   height: 70px;
@@ -21,4 +21,9 @@
     margin: 0 50px 0 0;
     padding: 0;
   }
+}
+
+.footer-display {
+  display: flex;
+  justify-content: space-around;
 }
