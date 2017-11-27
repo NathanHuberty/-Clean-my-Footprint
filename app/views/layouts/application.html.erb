@@ -16,6 +16,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
     <%= javascript_include_tag 'application' %>
     <%= yield :after_js %>
+  
     <%= cloudinary_js_config %>
   </body>
 </html>

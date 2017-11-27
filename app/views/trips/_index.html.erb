@@ -35,109 +35,134 @@
     </div>
   </div>
 <% end %>
-
-<div class="container">
-  <div class="travels">
-    <div class="list-inline">
-      <% @trips.each do |trip| %>
-        <% if trip.compensation.present? %>
-        <div class="travels-cleaned travel">
-          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
-          <div><p><%= image_tag trip.compensation.project.logo, class:'logo-project-list'%></p></div>
-          <div>
-            <p>
-              <%= km_total(trip.km, trip.number).round(2) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€
-            </p>
-          </div>
-        </div>
-        <br>
+    <div class="body-travel">
+     <div class="view">
+    	<div class="card__full">
+    		<div class="card__full-top">
+    			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    					<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
+    					<path d="M0 0h24v24h-24z" fill="none"/>
+    			</svg>
+    			<span class="card__full-num"></span>
+    		</div>
+    		<div class="card__full-bottom">
+    			<p class="card__full-handle"></p>
+    			<p class="card__full-info"></p>
+    		</div>
+    	</div>
+      	<ul class="card__list">
+        <% current_user.trips.clean.each do |trip| %>
+          <li class="card__item card__item--blue">
+      			<div class="card__info">
+      				<div class="info-player">
+      					<p><%= image_tag trip.compensation.project.logo, class:'logo-project-list info-player__num'%></p>
+      					<p class="info-player__name"><%= trip.start_address %> <br><%= trip.destination_address %></p>
+      				</div>
+              <i class="fa <%= trip.transportation.icon %> info-place " aria-hidden="true"></i>
+      			</div>
+      		</li>
         <% end %>
-      <% end %>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <div class="card-trip" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
-        <div class="card-trip-category">Popular</div>
-        <div class="card-trip-description">
-          <h2>Le Wagon Shanghai</h2>
-          <p>Very cool city, the best</p>
-        </div>
-        <img class="card-trip-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <a class="card-trip-link" href="#" ></a>
-      </div>
-    </div>
-  </div>
-</div>
+##########
+
+<%#= km_total(trip.km, trip.number).round(2) %> km au total,
+<%#= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour
+<%#= trip.compensation.amount %>€
 
 
-  <!-- Modal -->
-  <!-- <div class="container">
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-center" id="exampleModalLabel">Choose you compensation</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="logo-projects">
-            <div class="row">
-              <%# @projects.each do |project| %>
-                <div class="col-xs-6">
-                  <button class="bouton-logo">
-                    <%#= link_to '', trip_compensations_path(@trip) %>
-                    <%#= image_tag project.logo, class:'logo-project-modal' %>
-                  </button class="bouton-logo">
-                </div>
-              <%# end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
+  <%= content_for :after_js do  %>
+  <script>
 
-<!--
-    <ul class="rolldown-list" id="myList">
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-      <li>Four</li>
-      <li>Five</li>
-      <li>Six</li>
-      <li>Seven</li>
-      <li>Eight</li>
-    </ul>
+  $( document ).ready(function() {
+  var Cards = (function() {
 
-    <button id="btnReload">Reload</button>
+var view 	= $('.view');
+var vw 		= view.innerWidth();
+var vh	 	= view.innerHeight();
+var vo 		= view.offset();
+var card 	= $('.card__item');
+var cardfull = $('.card__full');
+var cardfulltop = cardfull.find('.card__full-top');
+var arrow = cardfulltop.find('svg');
+var cardnum = cardfulltop.find('.card__full-num');
+var cardhandle = cardfull.find('.card__full-handle');
+var cardinfo = cardfull.find('.card__full-info');
+var w 		= $(window);
 
+var data = [
 
+    <% current_user.trips.clean.each do |trip| %>
+  {
+    img: '<%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>',
+    handle: '<%= trip.start_address %> - <%= trip.destination_address %>',
+    info: 'rcyvtgubhizaszjoi.'
+  },
+  <% end %>
+];
+var moveCard = function() {
+  var self = $(this);
+  var selfIndex = self.index();
+  var selfO = self.offset();
+  var ty = w.innerHeight()/2 - selfO.top -4;
 
-  <%#= content_tag :after_js do  %>
-    <script>
-        // Increments the delay on each item.
-      $('.rolldown-list li').each(function () {
-      var delay = ($(this).index() / 4) + 's';
-      $(this).css({
-        webkitAnimationDelay: delay,
-        mozAnimationDelay: delay,
-        animationDelay: delay
-      });
-      });
+  var color = self.css('border-top-color');
+  cardfulltop.css('background-color', color);
+  cardhandle.css('color', color);
 
-      $('#btnReload').click(function () {
-      $('#myList').removeClass('rolldown-list');
-      setTimeout(function () {
-        $('#myList').addClass('rolldown-list');
-      }, 1);
-      });
-    </script>
-  <%# end %> -->
+  updateData(selfIndex);
+
+  self.css({
+    'transform': 'translateY(' + ty + 'px)'
+  });
+
+  self.on('transitionend', function() {
+    cardfull.addClass('active');
+    self.off('transitionend');
+  });
+
+  return false;
+};
+
+var closeCard = function() {
+  cardfull.removeClass('active');
+  cardnum.hide();
+  cardinfo.hide();
+  cardhandle.hide();
+  cardfull.on('transitionend', function() {
+    card.removeAttr('style');
+    cardnum.show();
+    cardinfo.show();
+    cardhandle.show();
+    cardfull.off('transitionend');
+  });
+};
+
+var updateData = function(index) {
+  cardnum.html(data[index].img);
+  cardhandle.text(data[index].handle);
+  cardinfo.text(data[index].info);
+};
+
+var bindActions = function() {
+  card.on('click', moveCard);
+  arrow.on('click', closeCard);
+};
+
+var init = function() {
+  bindActions();
+};
+
+return {
+  init: init
+};
+
+}());
+
+Cards.init();
+});
+  </script>
+  <% end %>
