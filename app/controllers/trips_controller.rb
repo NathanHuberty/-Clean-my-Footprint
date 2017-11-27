@@ -3,7 +3,6 @@ require_relative '../services/google_api'
 class TripsController < ApplicationController
 
   def create
-
     if params[:trip][:recurring] == "1"
       starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
       days_between = (Date.today - starting_date).to_i
@@ -43,6 +42,12 @@ class TripsController < ApplicationController
     else
       render params[:url]
     end
+  end
+
+  def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to "/dashboard"
   end
 
   private
