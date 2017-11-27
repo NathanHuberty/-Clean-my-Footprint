@@ -1,0 +1,27 @@
+
+<div class="container" style="margin-top:70px;">
+  <h1>Compensating
+    <% @compensation.trips.each do |trip| %>
+      <%= "#{trip.start_address} - #{trip.destination_address} " %>
+    <% end %>
+    trip
+  </h1>
+  <%= form_tag compensation_payments_path(@compensation) do %>
+    <article>
+      <label class="amount">
+        <span>Amount: <%= humanized_money_with_symbol(@compensation.amount) %></span>
+      </label>
+    </article>
+
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name="My compensation"
+      data-email="<%= current_user.email %>"
+       data-description="#{ @compensation.trips.first.start_address} to #{@compensation.trips.first.start_address} trip"
+      data-amount="<%= @compensation.amount_cents %>"
+      data-currency="<%= @compensation.amount.currency %>"></script>
+  <% end %>
+
+</div>
+
