@@ -27,7 +27,7 @@ class TripsController < ApplicationController
     # if Plane then use geocoder to get direct distance between two points
     if @trip.transportation.category == "Avion"
       @trip.save
-      distance_for_one_trip = t.distance_from(@trip.destination_address)
+      distance_for_one_trip = @trip.distance_from(@trip.destination_address)
     else
       case @trip.transportation.category
         when "Voiture" || "Moto"
