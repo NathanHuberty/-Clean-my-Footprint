@@ -37,7 +37,10 @@
   font-size: 14px;
   opacity: 0.8;
   font-weight: lighter;
-  margin:0;
+  p {
+    font-size: 18px;
+  }
+  margin-top: 12px;
 }
 .card-link {
   position: absolute;
