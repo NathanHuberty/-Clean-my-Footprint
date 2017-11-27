@@ -4,7 +4,7 @@
     <div class="panel-heading title-color padding-none" role="tab" id="headingOne">
       <h4 class="panel-title text-center title-color">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
-          Ajouter un trajet
+          <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un trajet
         </a>
       </h4>
     </div>
@@ -20,10 +20,10 @@
               <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
               <br>
               <div class="row">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-6 col-sm-6">
                   <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
                 </div>
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-6 col-sm-6">
                   <%= f.input :recurring, as: :boolean, label: "Récurrent", input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
                 </div>
               </div>
@@ -35,19 +35,20 @@
 
               <!--recurring trip form-->
               <div id="recurring" class="collapse">
+                <label for="number_per">Récurrence: </label>
                 <div class="row">
-                  <div class="col-sm-12 col-md-5">
-                    <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
+                  <div class="col-xs-3 col-sm-12 col-md-5">
+                    <%= f.input :number_per, as: :integer, label: false, placeholder: '1' %>
                   </div>
-                  <div class="col-sm-12 col-md-2">
-                    <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
-                    fois par
+                  <div class="col-xs-3 col-sm-12 col-md-2">
+                   <!--  <div class ="text-center" style = "height:20px;padding-left: 10px;"></div> -->
+                    <p class="font-small">fois par</p>
                   </div>
-                  <div class="col-sm-12 col-md-5">
-                    <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
+                  <div class="col-xs-6 col-sm-12 col-md-5">
+                    <%= f.input :time_unit, label: false, collection: [ 'jour', 'semaine', 'mois' ] %>
                   </div>
                   <div class="row">
-                    <div class="col-sm-12 col-md-8">
+                    <div class="col-xs-12 col-md-12">
                       <div style="padding-left: 16px;">
                         <%= f.input :date_since, as: :date, label: 'Depuis le' %>
                       </div>
