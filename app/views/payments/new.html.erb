@@ -1,11 +1,11 @@
 
 <div class="container" style="margin-top:70px;">
-  <h1>Compensating
+  <h2>Compensating
     <% @compensation.trips.each do |trip| %>
       <%= "#{trip.start_address} - #{trip.destination_address} " %>
     <% end %>
     trip
-  </h1>
+  </h2>
   <%= form_tag compensation_payments_path(@compensation) do %>
     <article>
       <label class="amount">
