@@ -1,78 +1,69 @@
 
-<!-- tried to put the form inside a modal -->
-
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddATrip" id="AddATrip">
-  Ajouter un trajet
-</button>
-
-<div class="modal fade" id="AddATrip" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">Votre nouveau trajet</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Formulaire ici
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary">Créez votre trajet</button>
-      </div>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
+          Ajouter un trajet
+        </a>
+      </h4>
     </div>
-  </div>
-</div> -->
-
-
-
-<h3>Rentrez votre trajet</h3>
-
-<%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
-  <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
-  <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
-  <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
-  <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
-  <br>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :recurring, as: :boolean, label: "Récurrent", input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
-    </div>
-  </div>
-  <br>
-  <!--occasionnal trip form-->
-  <div id="occasional" class="collapse">
-    <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
-  </div>
-
-  <!--recurring trip form-->
-  <div id="recurring" class="collapse">
-    <div class="row">
-      <div class="col-sm-12 col-md-5">
-        <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
-      </div>
-      <div class="col-sm-12 col-md-2">
-        <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
-        fois par
-      </div>
-      <div class="col-sm-12 col-md-5">
-        <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-8">
-          <div style="padding-left: 16px;">
-            <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+    <div id="collapseForm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <h3>Rentrez votre trajet</h3>
+        <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
+          <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
+          <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
+          <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+          <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
+          <br>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :recurring, as: :boolean, label: "Récurrent", input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
+            </div>
           </div>
-        </div>
+          <br>
+          <!--occasionnal trip form-->
+          <div id="occasional" class="collapse">
+            <%= f.input :number_of_times, as: :integer, label: 'Nombre de voyages', placeholder: '1' %>
+          </div>
+
+          <!--recurring trip form-->
+          <div id="recurring" class="collapse">
+            <div class="row">
+              <div class="col-sm-12 col-md-5">
+                <%= f.input :number_per, as: :integer, label: 'Récurrence', placeholder: '1' %>
+              </div>
+              <div class="col-sm-12 col-md-2">
+                <div class ="text-center" style = "height:20px;padding-left: 10px;"></div>
+                fois par
+              </div>
+              <div class="col-sm-12 col-md-5">
+                <%= f.input :time_unit, collection: [ 'jour', 'semaine', 'mois' ] %>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-8">
+                  <div style="padding-left: 16px;">
+                    <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= f.button :submit %>
+        <% end %>
       </div>
     </div>
   </div>
-  <%= f.button :submit %>
-<% end %>
+</div>
+
+
+
+
+
 
 
 <!-- form elements -->
