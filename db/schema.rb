@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20171127112410) do
     t.integer  "compensation_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["compensation_id"], name: "index_trips_on_compensation_id", using: :btree
     t.index ["transportation_id"], name: "index_trips_on_transportation_id", using: :btree
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
