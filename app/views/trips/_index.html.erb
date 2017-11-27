@@ -50,7 +50,11 @@
         <div class="travels-cleaned travel">
           <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
           <div><p><%= image_tag trip.compensation.project.logo, class:'logo-project-list'%></p></div>
-          <div><p><%= km_total(trip.km, trip.number) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€</p></div>
+          <div>
+            <p>
+              <%= km_total(trip.km, trip.number).round(2) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€
+            </p>
+          </div>
         </div>
         <br>
         <% end %>

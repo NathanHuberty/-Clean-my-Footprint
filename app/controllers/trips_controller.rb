@@ -37,7 +37,7 @@ class TripsController < ApplicationController
       end
       distance_for_one_trip = GoogleApi.km_calcul("#{@trip.start_address}", "#{@trip.destination_address}", "#{transport}")
     end
-    @trip.km = distance_for_one_trip * @trip.number
+    @trip.km = distance_for_one_trip
     if @trip.save!
       redirect_to dashboard_path
     else
