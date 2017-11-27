@@ -12,28 +12,28 @@
   </div> -->
 <!-- add Event listener tick button radio => action (press button clean) -->
 <div class="container">
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">Choose you compensation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="logo-projects">
-          <div class="row">
-            <div class="">
-              <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
-              <%= f.button :submit %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Choose you compensation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="logo-projects">
+            <div class="row">
+              <div class="">
+                <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
+                <%= f.button :submit %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -58,20 +58,42 @@
       <% end %>
     </div>
   </div> -->
+<div class="container">
   <div class="travels">
     <div class="list-inline">
       <% @trips.each do |trip| %>
         <% if trip.compensation.present? %>
-        <div class="travels-cleaned travel">
-          <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
-          <div><p><%= image_tag trip.compensation.project.logo, class:'logo-project-list'%></p></div>
-          <div><p><%= km_total(trip.km, trip.number) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€</p></div>
-        </div>
-        <br>
+          <div class="travels-cleaned travel">
+            <div><p><i class="fa <%= trip.transportation.icon %> " aria-hidden="true"></i>  <%= trip.start_address %> - <%= trip.destination_address %></p></div>
+            <div><p><%= image_tag trip.compensation.project.logo, class:'logo-project-list'%></p></div>
+            <div><p><%= km_total(trip.km, trip.number) %> km au total, <%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour <%= trip.compensation.amount %>€</p></div>
+          </div>
+          <br>
         <% end %>
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+      <div class="card-trip" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-trip-category">Popular</div>
+        <div class="card-trip-description">
+          <h2>Le Wagon Shanghai</h2>
+          <p>Very cool city, the best</p>
+        </div>
+        <img class="card-trip-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <a class="card-trip-link" href="#" ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
   <!-- Modal -->
   <!-- <div class="container">
