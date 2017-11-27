@@ -1,0 +1,14 @@
+
+<div class="container" style="margin-top:70px;">
+  <h1>Compensation</h1>
+  <ul style="list-style: none">
+    <li>Status: <%= @compensation.state %></li>
+    <li>Item:
+      <% @compensation.trips.each do |trip| %>
+        <%= "#{trip.start_address} - #{trip.destination_address} " %>
+      <% end %>
+      trip
+    </li>
+    <li>Amount: <%= humanized_money_with_symbol(@compensation.amount) %></li>
+  <ul>
+</div>
