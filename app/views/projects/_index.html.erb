@@ -1,4 +1,4 @@
-
+<h3 class="text-center title-project"> Nos partenaires</h3>
 <% Project.all.each do |project| %>
   <% if project != @project %>
     <div class="col-xs-12 col-sm-6 col-md-3">
@@ -14,7 +14,7 @@
           <p><%= project.address %></p>
         </div>
         <%= link_to project , class: "card-link" do %>
-          <h4>Hidden text</h4><p><%= project.description[0..98] %>...</p><!--cahnged-->
+          <!-- <h4>Hidden text</h4><p><%= project.description[0..98] %>...</p><!cahnged-->
         <% end %>
         </div>
     <% end %>
@@ -22,5 +22,3 @@
     </div>
   <% end %>
 <% end %>
-
-
