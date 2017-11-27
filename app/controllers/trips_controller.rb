@@ -22,16 +22,22 @@ class TripsController < ApplicationController
 
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    case @trip.transportation.category
-    when "Voiture" || "Avion" || "Moto"
-      transport = "driving"
-    when "Train" || "Transport en commun"
-      transport = "transit"
-    end
-
     @trip.number = single_trips * params[:trip][:num_return].to_i
-    @trip.km = GoogleApi.km_calcul("#{@trip.start_address}", "#{@trip.destination_address}", "#{transport}") * @trip.number
-
+    @trip.save
+    # if Plane then use geocoder to get direct distance between two points
+    if @trip.transportation.category == "Avion"
+      @trip.save
+      distance_for_one_trip = t.distance_from(@trip.destination_address)
+    else
+      case @trip.transportation.category
+        when "Voiture" || "Moto"
+          transport = "driving"
+        when "Train" || "Transport en commun"
+          transport = "transit"
+      end
+      distance_for_one_trip = GoogleApi.km_calcul("#{@trip.start_address}", "#{@trip.destination_address}", "#{transport}")
+    end
+    @trip.km = distance_for_one_trip * @trip.number
     if @trip.save!
       redirect_to dashboard_path
     else
