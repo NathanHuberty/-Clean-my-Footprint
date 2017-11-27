@@ -10,7 +10,17 @@
   background-color: rgba($black, 0.3);
   border-radius: 10px;
   max-width: 500px;
-  width: 60%;
+  width: 90%;
   padding: 10px 20px;
   margin: 0 auto;
+}
+
+.title-color {
+  background-color: $white;
+  color: $dark_green;
+  text-decoration: none;
+}
+
+.padding-none {
+  padding: 0;
 }
