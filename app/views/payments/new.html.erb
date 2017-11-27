@@ -1,11 +1,48 @@
+<style>
+  /*.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}*/
+  .img-round{
+    border-radius: 50%;
+    height:30vh;
+    margin: 26px 0px;
+  }
 
-<div class="container" style="margin-top:70px;">
-  <h2>Compensating
+.content {
+    padding-bottom: 70px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .content {
+        padding-bottom: 0;
+    }
+    .footer {
+        position: relative;
+        top: auto;
+        left: auto;
+        height: 70px;
+    }
+}
+
+</style>
+
+<div class="content">
+  <div class="container text-center" style="margin-top:75px">
+  <h3>Compensating
     <% @compensation.trips.each do |trip| %>
       <%= "#{trip.start_address} - #{trip.destination_address} " %>
     <% end %>
     trip
-  </h2>
+  </h3>
+  <%= cl_image_tag @compensation.project.logo, :class => "img-round"  %>
   <%= form_tag compensation_payments_path(@compensation) do %>
     <article>
       <label class="amount">
@@ -24,4 +61,6 @@
   <% end %>
 
 </div>
+</div>
+
 
