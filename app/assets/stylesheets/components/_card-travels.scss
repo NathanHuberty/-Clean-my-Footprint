@@ -1,4 +1,5 @@
 $space: 1.5rem;
+
 $ease: all .5s cubic-bezier(0.23, 1, 0.32, 1);
 
 @function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
@@ -51,7 +52,7 @@ ul {
 	&__item {
 		margin: 0 0 $space / 2;
 		padding: $space*1.5 $space;
-		border-top: 4px solid $grey;
+		border-top: 4px solid $green;
 		box-shadow: 0 1px 3px rgba(black,.12), 0 1px 2px rgba(black,0.24);
 		background: $dark_green;
 		cursor: pointer;
@@ -87,6 +88,8 @@ ul {
 			align-items: center;
       p {
         color: white;
+				font-size: 12px;
+				font-weight: 700px;
       }
 
 			&__num {
@@ -96,7 +99,7 @@ ul {
 				padding: $space / 2;
 				margin: 0 $space / 2 0 0;
 				text-align: center;
-				background: silver;
+				background: white;
 				border-radius: 50%;
 				font-size: 36px;
 				color: white;
@@ -154,8 +157,9 @@ ul {
 
 		&-bottom {
 			display: flex;
-			justify-content: center;
-			flex-flow: column wrap;
+			align-items: center;
+			justify-content: space-around;
+			// flex-flow: column wrap;
 			padding: 0 $space * 2;
 			background: white;
 		}
@@ -198,7 +202,7 @@ ul {
 		}
 
 		&-handle {
-			font-size: 16px;
+			font-size: 17px;
 			margin: 0;
 		}
 
@@ -228,4 +232,24 @@ ul {
       transform: rotate(180deg) scale(1.1);
     }
   }
+}
+
+.card-open-infos {
+
+}
+
+.card-open-transport{
+font-size: 50px;
+}
+
+.card-open-km {
+	font-size: 14px;
+	color: $green;
+}
+
+.top-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+	height: 100%;
 }
