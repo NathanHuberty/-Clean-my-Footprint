@@ -17,53 +17,19 @@
               <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
               <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
               <label for="transportation">Moyen de transport</label>
-              <%= f.association :transportation, label: false, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+              <%#= f.association :transportation, label: false, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
               <div class="radio-tile-group">
-                <div class="input-container">
-                  <input id="bus" class="radio-button" type="radio" name="radio" />
-                  <div class="radio-tile">
-                    <div class="icon">
-                      <i class="fa fa-bus" aria-hidden="true"></i>
+                <% @transports.each do |transport| %>
+                  <div class="input-container">
+                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation_id" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %> " />
+                    <div class="radio-tile">
+                      <div class="icon">
+                        <i class="fa fa-<%= transport[:icon] %>" aria-hidden="true"></i>
+                      </div>
+                      <label for="<%= transport[:icon] %>" class="radio-tile-label font-smaller"><%= Transportation.find(transport[:name]).category %></label>
                     </div>
-                    <label for="bus" class="radio-tile-label font-smaller">Transport en commun</label>
                   </div>
-                </div>
-                <div class="input-container">
-                  <input id="train" class="radio-button" type="radio" name="radio" />
-                  <div class="radio-tile">
-                    <div class="icon">
-                      <i class="fa fa-train" aria-hidden="true"></i>
-                    </div>
-                    <label for="train" class="radio-tile-label">Train</label>
-                  </div>
-                </div>
-                <div class="input-container">
-                  <input id="motorcycle" class="radio-button" type="radio" name="radio" />
-                  <div class="radio-tile">
-                    <div class="icon">
-                      <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                    </div>
-                    <label for="motorcycle" class="radio-tile-label">Moto</label>
-                  </div>
-                </div>
-                <div class="input-container">
-                  <input id="car" class="radio-button" type="radio" name="radio" />
-                  <div class="radio-tile">
-                    <div class="icon">
-                      <i class="fa fa-car" aria-hidden="true"></i>
-                    </div>
-                    <label for="car" class="radio-tile-label">Voiture</label>
-                  </div>
-                </div>
-                <div class="input-container">
-                  <input id="plane" class="radio-button" type="radio" name="radio" />
-                  <div class="radio-tile">
-                    <div class="icon">
-                      <i class="fa fa-plane" aria-hidden="true"></i>
-                    </div>
-                    <label for="plane" class="radio-tile-label">Avion</label>
-                  </div>
-                </div>
+                <% end %>
               </div>
               <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
               <br>
