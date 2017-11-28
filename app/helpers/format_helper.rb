@@ -11,13 +11,15 @@ module FormatHelper
               <p>à: #{trip.destination_address}</p>
             </div>
 
+<div class='trips-to'>
+<i class='fa #{trip.transportation.icon} transport-icon'aria-hidden='true'></i>
             <div class='trip-to-compensate-infos text-center'>
-            <i class='fa #{trip.transportation.icon} transport-icon'aria-hidden='true'></i>
               <p>#{km_total(trip.km, trip.number)}km </p>
             </div>
 
             <p class='travel-emission'>#{(trip.transportation.emission * km_total(trip.km, trip.number)).round(2)} kg CO2</p>
 
+</div>
           <div class='trash-size'>
             <a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='trips/#{trip.id}'>
             <i class='fa fa-close' style='color: white;' aria-hidden='true'></i>

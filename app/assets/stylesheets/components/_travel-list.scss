@@ -13,13 +13,22 @@
     margin: 0;
     // padding: 10px 10px;
     font-size: 11px;
+    // add if start_address.length < 20 characters font-size.14px  (same for destination_address)
   }
 }
 
+.trips-to {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+position: absolute;
+top:56%;
+}
+
 .travel-emission {
-  position: absolute;
-  top: 70%;
-  left: center;
+  // position: absolute;
+  // top: 70%;
+  // left: 1px;
 }
 .trip-to-compensate {
   position: absolute;
@@ -28,9 +37,9 @@
 }
 
 .trip-to-compensate-infos {
-  position: absolute;
-  right: 0;
-  top: 40px;
+  // position: absolute;
+  // right: 0;
+  // top: 40px;
 }
 
 .transport-icon {
