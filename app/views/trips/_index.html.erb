@@ -3,7 +3,7 @@
   <div class="container">
     <div class="travels">
       <div class="row">
-          <%= f.collection_radio_buttons(:trip_ids, format_trips(Trip.pending), :first, :last) %>
+          <%= f.collection_radio_buttons(:trip_ids, format_trips(current_user.trips.pending), :first, :last) %>
       </div>
     </div>
   <!--
@@ -11,7 +11,7 @@
     </div> -->
   <!-- add Event listener tick button radio => action (press button clean) -->
   <div class="container">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-resize" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -21,12 +21,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="logo-projects">
-              <div class="row">
-                <div class="">
-                  <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
-                  <%= f.button :submit %>
-                </div>
+            <div class="row">
+              <div class="">
+                <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
+                <%= f.button :submit, class:'btn-compensation' %>
               </div>
             </div>
           </div>
@@ -43,8 +41,13 @@
     					<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
     					<path d="M0 0h24v24h-24z" fill="none"/>
     			</svg>
-    			<span class="card__full-num"></span>
-    		</div>
+          <!-- <div class="top-card"> -->
+            <span class="card__full-num list-inline"></span>
+
+          <!-- </div> -->
+
+            <!-- créer 2 div en plus : Co2 top left // € top right  -->
+        </div>
     		<div class="card__full-bottom">
     			<p class="card__full-handle"></p>
     			<p class="card__full-info"></p>
@@ -55,9 +58,9 @@
           <li class="card__item card__item--blue">
       			<div class="card__info">
       				<div class="info-player">
-      					<p><%= image_tag trip.compensation.project.logo, class:'logo-project-list info-player__num'%></p>
-      					<p class="info-player__name"><%= trip.start_address %> <br><%= trip.destination_address %></p>
-      				</div>
+                <p><%= image_tag trip.compensation.project.logo, class:'logo-project-list info-player__num'%></p>
+                <p class="info-player__name"><%= trip.start_address %> - <%= trip.destination_address %></p>
+              </div>
               <i class="fa <%= trip.transportation.icon %> info-place " aria-hidden="true"></i>
       			</div>
       		</li>
@@ -66,13 +69,6 @@
     </div>
   </div>
 </div>
-
-##########
-
-<%#= km_total(trip.km, trip.number).round(2) %> km au total,
-<%#= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour
-<%#= trip.compensation.amount %>€
-
 
   <%= content_for :after_js do  %>
   <script>
@@ -97,12 +93,14 @@ var data = [
 
     <% current_user.trips.clean.each do |trip| %>
   {
-    img: '<%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>',
-    handle: '<%= trip.start_address %> - <%= trip.destination_address %>',
-    info: 'rcyvtgubhizaszjoi.'
+    img: '<p class="emission"><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 </p> <%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>  <p class="euros"> <%= trip.compensation.amount %>€</p>',
+    handle: '<div>de : <%= trip.start_address %> <br /> à : <%= trip.destination_address %></div>',
+    info: '<div class="text-center card-open-infos"> <i class="fa <%= trip.transportation.icon %> info-place card-open-transport " aria-hidden="true"></i>\
+     <p class="card-open-km"> <%= km_total(trip.km, trip.number).round(2)%> km</p> </div>'
   },
   <% end %>
 ];
+
 var moveCard = function() {
   var self = $(this);
   var selfIndex = self.index();
@@ -143,8 +141,8 @@ var closeCard = function() {
 
 var updateData = function(index) {
   cardnum.html(data[index].img);
-  cardhandle.text(data[index].handle);
-  cardinfo.text(data[index].info);
+  cardhandle.html(data[index].handle);
+  cardinfo.html(data[index].info);
 };
 
 var bindActions = function() {

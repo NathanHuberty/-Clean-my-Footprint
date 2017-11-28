@@ -1,15 +1,23 @@
-.logo-projects {
-display: flex;
-justify-content: space-around;
-}
 
 .logo-project-modal {
-  height: 200px;
-  width: 200px;
+  height: 110px;
+  width: 110px;
   border-radius: 50%;
-  margin: 30px;
+  margin: 10px;
 }
 
 .bouton-logo {
   border: none;
+}
+
+.modal-resize {
+  height: 65%;
+  top: 25%
+}
+
+.btn-compensation {
+  color: $white;
+  background-color: $dark_green;
+  border-color: $green;
+  justify-content: center;
 }

@@ -34,6 +34,7 @@
 
 </style>
 
+
 <div class="content">
   <div class="container text-center" style="margin-top:75px">
   <h3>Compensating
@@ -53,9 +54,9 @@
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-name="My compensation"
+      data-name="Compensating trip"
       data-email="<%= current_user.email %>"
-       data-description="#{ @compensation.trips.first.start_address} to #{@compensation.trips.first.start_address} trip"
+      data-description="<%=@compensation.trips.first.start_address%> to <%=@compensation.trips.first.destination_address%> trip"
       data-amount="<%= @compensation.amount_cents %>"
       data-currency="<%= @compensation.amount.currency %>"></script>
   <% end %>
