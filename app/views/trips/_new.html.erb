@@ -16,8 +16,10 @@
             <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
               <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
               <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
-              <label for="transportation">Moyen de transport</label>
+              <div class="text-center">
+                <label for="transportation">Moyen de transport</label>
               <%#= f.association :transportation, label: false, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+              </div>
               <div class="radio-tile-group">
                 <% @transports.each do |transport| %>
                   <div class="input-container">
@@ -31,8 +33,11 @@
                   </div>
                 <% end %>
               </div>
-                <%= f.input :num_return, as: :boolean, input_html: { class: "coco" } %>
               <br>
+              <%= f.collection_check_boxes :num_return, [[true, 'Aller / retour']], :first, :last, item_wrapper_class: "filter-radio text-center" %>
+
+              <br>
+
               <div class="row">
                 <div class="col-xs-6 col-sm-6">
                   <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
