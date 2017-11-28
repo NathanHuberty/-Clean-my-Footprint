@@ -16,6 +16,58 @@
             <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
               <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
               <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
+              <div class="radio-tile-group">
+
+                <div class="input-container">
+                  <input id="bus" class="radio-button" type="radio" name="radio" />
+                  <div class="radio-tile">
+                    <div class="icon">
+                      <i class="fa fa-bus" aria-hidden="true"></i>
+                    </div>
+                    <label for="bus" class="radio-tile-label font-smaller">Transport en commun</label>
+                  </div>
+                </div>
+
+                <div class="input-container">
+                  <input id="train" class="radio-button" type="radio" name="radio" />
+                  <div class="radio-tile">
+                    <div class="icon">
+                      <i class="fa fa-train" aria-hidden="true"></i>
+                    </div>
+                    <label for="train" class="radio-tile-label">Train</label>
+                  </div>
+                </div>
+
+                <div class="input-container">
+                  <input id="motorcycle" class="radio-button" type="radio" name="radio" />
+                  <div class="radio-tile">
+                    <div class="icon">
+                      <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                    </div>
+                    <label for="motorcycle" class="radio-tile-label">Moto</label>
+                  </div>
+                </div>
+
+                <div class="input-container">
+                  <input id="car" class="radio-button" type="radio" name="radio" />
+                  <div class="radio-tile">
+                    <div class="icon">
+                      <i class="fa fa-car" aria-hidden="true"></i>
+                    </div>
+                    <label for="car" class="radio-tile-label">Voiture</label>
+                  </div>
+                </div>
+
+                <div class="input-container">
+                  <input id="plane" class="radio-button" type="radio" name="radio" />
+                  <div class="radio-tile">
+                    <div class="icon">
+                      <i class="fa fa-plane" aria-hidden="true"></i>
+                    </div>
+                    <label for="plane" class="radio-tile-label">Avion</label>
+                  </div>
+                </div>
+              </div>
               <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
               <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
               <br>
