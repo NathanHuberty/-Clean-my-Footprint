@@ -4,6 +4,6 @@ module CalculationHelper
   end
 
   def km_total(km, nb_of_trips)
-    km * nb_of_trips
+      km * nb_of_trips
   end
 end

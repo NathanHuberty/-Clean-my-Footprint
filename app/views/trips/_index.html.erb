@@ -3,7 +3,7 @@
   <div class="container">
     <div class="travels">
       <div class="row">
-          <%= f.collection_radio_buttons(:trip_ids, format_trips(Trip.pending), :first, :last) %>
+          <%= f.collection_radio_buttons(:trip_ids, format_trips(current_user.trips.pending), :first, :last) %>
       </div>
     </div>
   <!--
