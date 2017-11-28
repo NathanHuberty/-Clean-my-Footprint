@@ -5,42 +5,30 @@ class TripsController < ApplicationController
   def create
     if params[:trip][:recurring] == "1"
       starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
-      days_between = (Date.today - starting_date).to_i
       frequency = params[:trip][:number_per].to_i
-
-      if params[:trip][:time_unit] == "jour"
-        single_trips = days_between * frequency
-      elsif params[:trip][:time_unit] == "semaine"
-        single_trips = (days_between / 7).floor * frequency
-      else # if mois
-        single_trips = (days_between / 30).floor * frequency
-      end
+      time_unit = params[:trip][:time_unit]
+      days_between = (Date.today - starting_date).to_i
+      time_units = {"jour" => 1,"semaine" => 7, "mois" => 30 }
+      single_trips = (days_between / time_units[time_unit]).floor * frequency
     else
       single_trips = params[:trip][:number_of_times].to_i
     end
-
-    @trip = Trip.new(trip_params)
-    @trip.user = current_user
+    @trip = current_user.trips.new(trip_params)
     @trip.number = single_trips * params[:trip][:num_return].to_i
+
     @trip.save
-    # if Plane then use geocoder to get direct distance between two points
-    if @trip.transportation.category == "Avion"
-      @trip.save# adds start latitude and longitude
-      distance_for_one_trip = @trip.distance_from(@trip.destination_address)# distance_form built-in
-    else
-      case @trip.transportation.category
-        when "Voiture" || "Moto"
-          transport = "driving"
-        when "Train" || "Transport en commun"
-          transport = "transit"
-      end
-      distance_for_one_trip = GoogleApi.km_calcul("#{@trip.start_address}", "#{@trip.destination_address}", "#{transport}")
-    end
-    @trip.km = distance_for_one_trip
-    if @trip.save!
+    distance_for_one_trip = GoogleApi.km_calcul(@trip)
+
+    if distance_for_one_trip.present?
+      @trip.update(km: distance_for_one_trip)
       redirect_to dashboard_path
     else
-      render params[:url]
+      @trip.destroy
+      @compensation = Compensation.new
+      @trips = current_user.trips
+      @projects = Project.all
+      render "pages/dashboard"
+      flash[:alert] = "Not a valid route"
     end
   end
 
