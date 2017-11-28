@@ -16,3 +16,134 @@
 }
 
 
+* {
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.radio-tile-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  //set dimensions for invisible container
+  .input-container {
+    position: relative;
+    height:  7rem;
+    width:  7rem;
+    margin: 0.5rem;
+
+    //make actual radio input invisible
+    // + stretch to fill container
+    .radio-button {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    //default tile styles
+    .radio-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border: 2px solid $light-green;
+      border-radius: 5px;
+      padding: 1rem;
+      transition: transform 300ms ease;
+    }
+    .icon i {
+      color: $light-green;
+      font-size: 2.5rem;
+    }
+    // .icon svg {
+    //   fill: $light-green;
+    //   width: 3rem;
+    //   height: 3rem;
+    // }
+    .radio-tile-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $light-green;
+      margin-top: 7px;
+      margin-bottom: 0;
+      &.font-smaller {
+        font-size: 0.57rem;
+      }
+    }
+
+    //active tile styles
+    .radio-button:checked + .radio-tile {
+      background-color: $light-green;
+      border: 2px solid $light-green;
+      color: white;
+      transform: scale(1.1, 1.1);
+
+      .icon i {
+        color: white;
+      }
+      // .icon svg {
+      //   fill: white;
+      //   background-color: $light-green;
+      // }
+      .radio-tile-label {
+        color: white;
+        background-color: $light-green;
+      }
+    }
+  }
+}
+
+
+// checkbox Aller/retour
+
+.filter-radio {
+  input[type=checkbox] {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+  }
+  // input[type=radio] ~ label {
+  //   width: calc(100% + 30px);
+  // }
+  label {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+
+  input[type=checkbox] ~ label:before {
+      font-family: FontAwesome;
+      display: inline-block;
+      content: "\f1db";
+      letter-spacing: 10px;
+      font-size: 20px;
+      color: $light_green;
+      margin-left: -15px;
+  }
+
+  input[type=checkbox]:checked ~ label:before {
+      content: "\f00c";
+      font-size: 20px;
+      color: $dark_green;
+      letter-spacing: 5px;
+  }
+}
+
+
+
+
