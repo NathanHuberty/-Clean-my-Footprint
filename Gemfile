@@ -25,6 +25,8 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'money-rails'
 gem 'stripe'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 group :development, :test do
   gem 'pry-byebug'
