@@ -11,7 +11,7 @@
     </div> -->
   <!-- add Event listener tick button radio => action (press button clean) -->
   <div class="container">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-resize" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -21,12 +21,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="logo-projects">
-              <div class="row">
-                <div class="">
-                  <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
-                  <%= f.button :submit %>
-                </div>
+            <div class="row">
+              <div class="">
+                <%= f.collection_radio_buttons :project_id, format_project(Project.all), :first, :last %>
+                <%= f.button :submit, class:'btn-compensation' %>
               </div>
             </div>
           </div>
