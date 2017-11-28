@@ -22,6 +22,7 @@ class TripsController < ApplicationController
 
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+    @trip.transportation = params[:transportation_id]
     @trip.number = single_trips * params[:trip][:num_return].to_i
     @trip.save
     # if Plane then use geocoder to get direct distance between two points
@@ -54,6 +55,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_address, :destination_address, :number, :transportation_id)
+    params.require(:trip).permit(:start_address, :destination_address, :number)
   end
 end
