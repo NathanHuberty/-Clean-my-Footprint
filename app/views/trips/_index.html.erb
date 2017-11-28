@@ -43,11 +43,10 @@
     					<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
     					<path d="M0 0h24v24h-24z" fill="none"/>
     			</svg>
-          <div class="top-card">
-            <p> ezrerz</p>
-            <span class="card__full-num"></span>
-            <p> ijijij</p>
-          </div>
+          <!-- <div class="top-card"> -->
+            <span class="card__full-num list-inline"></span>
+
+          <!-- </div> -->
 
             <!-- créer 2 div en plus : Co2 top left // € top right  -->
         </div>
@@ -96,27 +95,13 @@ var data = [
 
     <% current_user.trips.clean.each do |trip| %>
   {
-    img: '<%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>',
+    img: '<p class="emission"><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 </p> <%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>  <p class="euros"> <%= trip.compensation.amount %>€</p>',
     handle: '<div>de : <%= trip.start_address %> <br /> à : <%= trip.destination_address %></div>',
     info: '<div class="text-center card-open-infos"> <i class="fa <%= trip.transportation.icon %> info-place card-open-transport " aria-hidden="true"></i>\
      <p class="card-open-km"> <%= km_total(trip.km, trip.number).round(2)%> km</p> </div>'
   },
   <% end %>
 ];
-
-
-// <p> <%#= trip.compensation.amount %>€</p>
-// <%#= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2
-
-
-
-
-// <%#= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 compensés pour
-//
-// <i class="fa <%#= trip.transportation.icon %> info-place " aria-hidden="true"></i>
-
-
-
 
 var moveCard = function() {
   var self = $(this);
