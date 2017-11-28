@@ -1,11 +1,4 @@
 $space: 1.5rem;
-$grey: lighten(black, 25);
-$blue: #5171C3;
-$orange: #DE660F;
-$green: #2EA83B;
-$yellow: #BDB235;
-$tan: #AA9E5C;
-$purple: #3E5EB3;
 $ease: all .5s cubic-bezier(0.23, 1, 0.32, 1);
 
 @function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
