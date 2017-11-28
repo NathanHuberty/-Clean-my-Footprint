@@ -1,11 +1,6 @@
 .wrapper {
   background-color: $white;
 }
-.travels{
-  margin: 50px;
-}
-
-
 
 .travel {
   display: flex;
@@ -16,9 +11,36 @@
   p {
     color: $white;
     margin: 0;
-    padding: 10px 10px;
+    // padding: 10px 10px;
+    font-size: 11px;
   }
 }
+
+.travel-emission {
+  position: absolute;
+  top: 70%;
+  left: center;
+}
+.trip-to-compensate {
+  position: absolute;
+  top: 10px;
+  left: 10px  ;
+}
+
+.trip-to-compensate-infos {
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+
+.transport-icon {
+  // position: absolute;
+  // top: 50%;
+  // right: center;
+  color: black;
+}
+
+
 .modal-header {
   display: flex;
 justify-content: space-between;
@@ -32,11 +54,19 @@ width: 100%;
 }
 .travels-to-clean {
   background-color: $red;
-  width: 100%;
-  height: 100px;
+  width: 330px;
+  font-size: 35px;
+  color: $white;
+  height: 121.5px;
+  left: 3%;
 }
 
-
+.trash-size {
+  font-size: 25px;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
 .logo-project-list {
   height: 100px;
   width: 100px;
