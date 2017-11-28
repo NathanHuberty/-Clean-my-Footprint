@@ -21,17 +21,17 @@
               <div class="radio-tile-group">
                 <% @transports.each do |transport| %>
                   <div class="input-container">
-                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation_id" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %> " />
+                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation_id" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %>" />
                     <div class="radio-tile">
                       <div class="icon">
                         <i class="fa fa-<%= transport[:icon] %>" aria-hidden="true"></i>
                       </div>
-                      <label for="<%= transport[:icon] %>" class="radio-tile-label font-smaller"><%= Transportation.find(transport[:name]).category %></label>
+                      <label for="<%= transport[:icon] %>" class="radio-tile-label <%= 'font-smaller' if Transportation.find(transport[:name]).category == 'Transport en commun' %>"><%= Transportation.find(transport[:name]).category %></label>
                     </div>
                   </div>
                 <% end %>
               </div>
-              <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
+                <%= f.input :num_return, as: :boolean, input_html: { class: "coco" } %>
               <br>
               <div class="row">
                 <div class="col-xs-6 col-sm-6">
