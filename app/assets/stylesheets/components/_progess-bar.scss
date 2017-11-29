@@ -1,0 +1,40 @@
+.bar-container {
+ width: 100%;
+}
+
+.bar-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.bar-background {
+  width: 100%;
+  height: 50px;
+  background-color: red;
+  position: relative;
+}
+
+.bar-progress {
+  position: absolute;
+  left: 0px;
+  background-color: green;
+  height: 50px;
+}
+
+.level-active {
+  border: solid 1px blue;
+}
+
+.level-inline {
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
