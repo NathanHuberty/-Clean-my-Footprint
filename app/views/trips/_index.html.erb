@@ -52,7 +52,7 @@
       			<div class="card__info">
       				<div class="info-player">
                 <p><%= image_tag trip.compensation.project.logo, class:'logo-project-list info-player__num'%></p>
-                <p class="info-player__name"><%= trip.start_address %> - <%= trip.destination_address %></p>
+                <p class="info-player__name"><%= trip.start_address %> <br><%= trip.destination_address %></p>
               </div>
               <i class="fa <%= trip.transportation.icon %> info-place " aria-hidden="true"></i>
       			</div>
