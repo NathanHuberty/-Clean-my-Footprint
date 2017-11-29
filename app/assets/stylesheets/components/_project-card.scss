@@ -12,6 +12,13 @@
 
 }
 
+.logo-project {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+
+}
+
 .project-card:hover{
   .card-title, .card-description {
     display:none;
