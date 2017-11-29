@@ -117,7 +117,7 @@
 
 // checkbox Aller/retour
 
-.filter-radio {
+.checkbox-form {
   input[type=checkbox] {
       border: 0;
       clip: rect(0 0 0 0);
@@ -134,6 +134,7 @@
   label {
     font-size: 20px;
     margin-bottom: 0px;
+    width: 100%;
   }
 
   input[type=checkbox] ~ label:before {
