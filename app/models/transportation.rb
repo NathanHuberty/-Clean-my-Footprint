@@ -5,6 +5,6 @@ class Transportation < ApplicationRecord
   validates :emission, presence: true
 
   def name
-    category
+   category
   end
 end
