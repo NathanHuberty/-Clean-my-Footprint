@@ -91,7 +91,7 @@ photo_urls_carbon = [
 
 # creating projects
 project_attributes = [
-  { name: "On Tree Planted",
+  { name: "One Tree Planted",
     address: "Malaisie",
     carbon: 150,
     description: Faker::Lorem.paragraph(8, false, 2),

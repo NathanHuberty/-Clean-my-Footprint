@@ -8,7 +8,7 @@ class CompensationsController < ApplicationController
     @compensation = Compensation.new(compensation_params)
     total_emission = 0
     @compensation.trips.each do |trip|
-      total_emission += (trip.km * trip.transportation.emission)
+      total_emission += (trip.km * trip.number * trip.transportation.emission)
     end
     @compensation.amount_cents = (total_emission / @compensation.project.carbon * 100) + 100
     @compensation.state = "pending"
