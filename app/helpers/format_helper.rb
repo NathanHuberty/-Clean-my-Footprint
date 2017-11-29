@@ -15,9 +15,8 @@ module FormatHelper
 <i class='fa #{trip.transportation.icon} transport-icon'aria-hidden='true'></i>
             <div class='trip-to-compensate-infos text-center'>
               <p>#{km_total(trip.km, trip.number)}km </p>
+              <p class='travel-emission'>#{(trip.transportation.emission * km_total(trip.km, trip.number)).round(2)} kg CO2</p>
             </div>
-
-            <p class='travel-emission'>#{(trip.transportation.emission * km_total(trip.km, trip.number)).round(2)} kg CO2</p>
 
 </div>
           <div class='trash-size'>
