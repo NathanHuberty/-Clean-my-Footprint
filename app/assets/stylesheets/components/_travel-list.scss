@@ -17,6 +17,11 @@
   }
 }
 
+.panel-title > a, {
+    color: inherit;
+    font-size: 17px;
+
+}
 .trips-to {
   width: 100%;
   display: flex;
@@ -46,7 +51,7 @@ top:56%;
   // position: absolute;
   // top: 50%;
   // right: center;
-  color: black;
+  color: $white;
 }
 
 
@@ -86,14 +91,14 @@ width: 100%;
 
 .filter-radio {
   input[type=radio] {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
+      // border: 0;
+      // clip: rect(0 0 0 0);
+      // height: 1px;
+      // margin: -1px;
+      // overflow: hidden;
+      // padding: 0;
+      // position: absolute;
+      // width: 1px;
       display: none;
 
   }
@@ -108,13 +113,14 @@ width: 100%;
   }
 
   input[type=radio] ~ label:before {
-      font-family: FontAwesome;
-      display: inline-block;
-      content: "\f1db";
-      letter-spacing: 10px;
-      font-size: 10px;
-      color: $white;
-      margin-left: -15px;
+      // font-family: FontAwesome;
+      // display: inline-block;
+      // content: "\f1db";
+      // letter-spacing: 10px;
+      // font-size: 10px;
+      // color: $white;
+      // margin-left: -15px;
+      display: none;
   }
 
   input[type=radio]:checked ~ label:before {
