@@ -3,7 +3,10 @@
 
     <div class="travels">
       <div class="row">
-          <%= f.collection_radio_buttons(:trip_ids, format_trips(current_user.trips.pending), :first, :last) %>
+        <% current_user.trips.pending.each do |trip| %>
+          <%= render 'trips/compensation_input', trip: trip %>
+        <%#= f.collection_radio_buttons(:trip_ids, format_trips(current_user.trips.pending), :first, :last) %>
+        <% end %>
       </div>
     </div>
 

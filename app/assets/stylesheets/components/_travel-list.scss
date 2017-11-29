@@ -17,6 +17,10 @@
   }
 }
 
+.width-red {
+  width: 100%;
+}
+
 .panel-title > a, {
     color: inherit;
     font-size: 17px;
@@ -71,7 +75,7 @@ width: 100%;
 }
 .travels-to-clean {
   background-color: $red;
-  width: 330px;
+  // width: 330px;
   font-size: 35px;
   color: $white;
   height: 121.5px;
