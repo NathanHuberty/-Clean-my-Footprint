@@ -2,8 +2,8 @@ module FormatHelper
   def format_trips(trips)
     trips.map do |trip|
       [  [trip.id],
-        "<div class=''>
-          <div class='col-xs-12 filter-radio travels-to-clean travel' type='button'
+        "<div class='col-xs-12 col-md-4'>
+          <div class='filter-radio travels-to-clean travel' type='button'
           data-toggle='modal' data-target='#exampleModal'>
 
             <div class='trip-to-compensate'>

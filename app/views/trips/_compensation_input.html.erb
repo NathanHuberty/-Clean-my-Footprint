@@ -1,0 +1,26 @@
+<div class='col-xs-12 col-sm-6 col-sm-offset-3'>
+  <input type="radio" value="<%= trip.id %>" name="compensation[trip_ids]" id="compensation_trip_ids_<%= trip.id %>" class="hidden">
+  <label for="compensation_trip_ids_<%= trip.id %>" class="width-red">
+    <div class='filter-radio travels-to-clean travel' type='button' data-toggle='modal' data-target='#exampleModal'>
+      <div class='trip-to-compensate'>
+        <p>de: <%= trip.start_address %></p>
+        <p>à: <%= trip.destination_address %></p>
+      </div>
+      <div class='trips-to'>
+        <i class='fa <%= trip.transportation.icon %> transport-icon' aria-hidden='true'></i>
+        <div class='trip-to-compensate-infos text-center'>
+          <p><%= km_total(trip.km, trip.number) %>km </p>
+          <p class='travel-emission'><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %>kg CO2</p>
+        </div>
+      </div>
+      <div class='trash-size'>
+        <a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='trips/<%= trip.id %>'>
+        <i class='fa fa-close' style='color: white;' aria-hidden='true'></i>
+        </a>
+      </div>
+    </div>
+
+
+  </label>
+
+</div>
