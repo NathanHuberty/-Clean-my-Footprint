@@ -68,21 +68,12 @@
                   </div>
                   <div class="row">
                     <div class="col-xs-12 col-sm-9 col-md-6">
-                      <div style="padding-left: 16px;">
-                        <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+                      <div style="padding: 6px 15px;">
+                        <input type='text' class="form-control" id='datetimepicker4' />
+                        <%#= f.input :date_since, as: :date, label: 'Depuis le', input_html: { id: 'datetimepicker4' } %>
                       </div>
                     </div>
                   </div>
-                    <div class="row">
-                        <div class='col-sm-6'>
-                            <input type='text' class="form-control" id='datetimepicker4' />
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#datetimepicker4').datetimepicker();
-                            });
-                        </script>
-                    </div>
                 </div>
               </div>
               <%= f.button :submit %>
@@ -93,6 +84,14 @@
     </div>
   </div>
 </div>
+
+<%= content_for :after_js do  %>
+  <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker4').datetimepicker();
+      });
+  </script>
+<% end %>
 
 
 
