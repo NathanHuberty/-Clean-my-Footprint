@@ -3,8 +3,8 @@ class Trip < ApplicationRecord
 
   belongs_to :user
   belongs_to :transportation
-  #validates :transportation_id, presence: true #???
   belongs_to :compensation, optional: true
+  validates :transportation_id, presence: true
   validates :km, presence: true, numericality: { greater_than: 0 }
   validates :number, numericality: { greater_than: 0 }
   validates :start_address, presence: true

@@ -6,7 +6,8 @@ class GoogleApi
 
   # def self.km_calcul(start_address, destination_address, transport)
   def self.km_calcul(trip)
-    return trip.distance_from(trip.destination_address).round(2) if trip.transportation.category == "Avion"
+    return nil if trip.transportation.nil?
+    return trip.distance_from(trip.destination_address).round(2) if trip.transportation.category
     transport = ["Voiture", "Moto"].include?(trip.transportation.category) ? "driving" : "transit"
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{trip.start_address.parameterize}&destination=#{trip.destination_address.parameterize}&mode=#{transport}&key=#{ENV['GOOGLE_API_KEY']}"
     #TODO: Gerer le cas ou le call API renvoi une 400

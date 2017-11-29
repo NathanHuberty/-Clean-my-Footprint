@@ -9,7 +9,6 @@ class PagesController < ApplicationController
     #trips/index
     # @trips_to_clean = Trip.where(user: current_user && compensation )
     @compensation = Compensation.new
-    @trips = current_user.trips
     @projects = Project.all
     #compensations/new
     #projects/index

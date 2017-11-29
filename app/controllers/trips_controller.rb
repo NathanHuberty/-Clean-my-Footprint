@@ -5,9 +5,7 @@ class TripsController < ApplicationController
   def create
     # On a besoin de ces 3 variables pour rendre pages/dashboard en cas d erreur
     # Voir si on peut simplifier l action Pages#Dashboard
-    @compensation = Compensation.new
-    @trips = current_user.trips
-    @projects = Project.all
+
 
     #TODO: Refacto dans un service ?
     if params[:trip][:recurring] == "1"
@@ -24,17 +22,12 @@ class TripsController < ApplicationController
     @trip = current_user.trips.new(trip_params)
     # ATTENTION single_trips ne doit jamais etre nil
     @trip.number = single_trips * params[:trip][:num_return].to_i
-
-    if @trip.geocode # valid?
-      distance_for_one_trip = GoogleApi.km_calcul(@trip)
-      if distance_for_one_trip.present?
-        @trip.km = distance_for_one_trip
-      end
-    end
-
+    @trip.km = GoogleApi.km_calcul(@trip) if @trip.geocode
     if @trip.save
       redirect_to dashboard_path
     else
+      @compensation = Compensation.new
+      @projects = Project.all
       flash[:alert] = "Not a valid route"
       render "pages/dashboard"
     end
