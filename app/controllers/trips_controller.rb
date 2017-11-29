@@ -8,7 +8,7 @@ class TripsController < ApplicationController
 
 
     #TODO: Refacto dans un service ?
-    if params[:trip][:recurring] == "1"
+    if params[:trip][:frequency] == "reccurent"
       starting_date = Date.parse(params["date_since"])
       frequency = params[:trip][:number_per].to_i
       time_unit = params[:trip][:time_unit]

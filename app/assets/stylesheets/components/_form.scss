@@ -155,3 +155,19 @@
   }
 }
 
+#form_radio_buttons {
+  .collection_radio_buttons {
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: none;
+  }
+
+  #trip_frequency_reccurent,
+  #trip_frequency_occasional {
+    vertical-align: top;
+  }
+}
