@@ -15,8 +15,8 @@ class TripsController < ApplicationController
     end
 
     @trip = current_user.trips.new(trip_params)
-    @trip.transportation = params[:transportation_id]
-    @trip.number = single_trips * (params[:trip][:num_return].to_i + 1)
+    @trip.transportation = Transportation.find(params[:transportation])
+    @trip.number = single_trips * (params[:trip][:num_return].last.to_i + 1)
 
 
     @trip.save
