@@ -11,7 +11,7 @@
     <div id="collapseForm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body padding-none">
         <div class="banner">
-          <div class="form-container">
+          <div class="form-container text-center">
             <h3>Rentrez votre trajet</h3>
             <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
               <%= f.input :start_address, label: false, placeholder: "Adresse de départ",include_blank: false, error: 'Veuillez indiquer une adresse de départ' %>
