@@ -1,4 +1,5 @@
 <% content_for :title, @project.name %>
+
 <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
@@ -26,7 +27,9 @@
 <div class="container" >
   <div class="row">
     <div class="col-xs-12 col-md-6">
-      <h1><%= @project.name %></h1>
+      <%= image_tag @project.logo, class: "logo-project-show" %>
+      <h3><%= @project.name %></h3>
+      <p>Montant total versé à <%= @project.name %> : <strong><%= total_project_amount(@project) %></strong></%>€</p>
       <p><%= @project.description %></p>
     </div>
     <div class="col-xs-12 col-md-6 full-width">
