@@ -46,7 +46,7 @@ ul {
 .card {
 
 	&__list {
-		padding: $space / 2;
+		// padding: $space / 2;
 	}
 
 	&__item {
@@ -86,10 +86,13 @@ ul {
 		.info-player {
 			display: flex;
 			align-items: center;
-      p {
+			// display: flex;
+	    // flex-wrap: wrap
+			p {
         color: white;
 				font-size: 12px;
 				font-weight: 700px;
+
       }
 
 			&__num {

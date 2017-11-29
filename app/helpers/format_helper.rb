@@ -34,7 +34,7 @@ module FormatHelper
 def format_project(projects)
   projects.map do |project|
     [  [project.id],
-      "<div class='logo-projects'> #{image_tag project.logo,  class: 'logo-project-modal'}   </div>".html_safe
+       image_tag(project.logo,  class: 'logo-project-modal')
     ]
   end
 end
