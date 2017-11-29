@@ -13,6 +13,16 @@
   width: 90%;
   padding: 10px 20px;
   margin: 10px auto;
+    h3 {
+      font-size: 21px;
+      text-align: center;
+      color: $white;
+  }
+}
+
+
+.form-control {
+  background-color: $white;
 }
 
 
@@ -143,7 +153,6 @@
       letter-spacing: 5px;
   }
 }
-
 
 
 
