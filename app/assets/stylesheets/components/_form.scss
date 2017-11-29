@@ -13,6 +13,16 @@
   width: 90%;
   padding: 10px 20px;
   margin: 10px auto;
+    h3 {
+      font-size: 21px;
+      text-align: center;
+      color: $white;
+  }
+}
+
+
+.form-control {
+  background-color: $white;
 }
 
 
@@ -107,7 +117,7 @@
 
 // checkbox Aller/retour
 
-.filter-radio {
+.checkbox-form {
   input[type=checkbox] {
       border: 0;
       clip: rect(0 0 0 0);
@@ -124,6 +134,7 @@
   label {
     font-size: 20px;
     margin-bottom: 0px;
+    width: 100%;
   }
 
   input[type=checkbox] ~ label:before {
@@ -143,5 +154,4 @@
       letter-spacing: 5px;
   }
 }
-
 

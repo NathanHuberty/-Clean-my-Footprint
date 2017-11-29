@@ -3,7 +3,6 @@ require_relative '../services/google_api'
 class TripsController < ApplicationController
 
   def create
-    raise
     if params[:trip][:recurring] == "1"
       starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
       frequency = params[:trip][:number_per].to_i
@@ -14,10 +13,10 @@ class TripsController < ApplicationController
     else
       single_trips = params[:trip][:number_of_times].to_i
     end
-    
+
     @trip = current_user.trips.new(trip_params)
-    @trip.transportation = params[:transportation_id]
-    @trip.number = single_trips * (params[:trip][:num_return].to_i + 1)
+    @trip.transportation = Transportation.find(params[:transportation])
+    @trip.number = single_trips * (params[:trip][:num_return].last.to_i + 1)
 
 
     @trip.save

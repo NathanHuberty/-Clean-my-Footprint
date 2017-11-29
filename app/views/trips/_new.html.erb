@@ -23,7 +23,7 @@
               <div class="radio-tile-group">
                 <% @transports.each do |transport| %>
                   <div class="input-container">
-                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation_id" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %>" />
+                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %>" />
                     <div class="radio-tile">
                       <div class="icon">
                         <i class="fa fa-<%= transport[:icon] %>" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
                 <% end %>
               </div>
               <br>
-              <%= f.collection_check_boxes :num_return, [[true, 'Aller / retour']], :first, :last, item_wrapper_class: "filter-radio text-center" %>
+              <%= f.collection_check_boxes :num_return, [[1, 'Aller / retour']], :first, :last, item_wrapper_class: "checkbox-form text-center" %>
 
               <br>
 

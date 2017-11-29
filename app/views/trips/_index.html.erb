@@ -1,15 +1,12 @@
 <%= simple_form_for @compensation do |f| %>
 
-  <div class="container">
+
     <div class="travels">
       <div class="row">
           <%= f.collection_radio_buttons(:trip_ids, format_trips(current_user.trips.pending), :first, :last) %>
       </div>
     </div>
-  <!--
-    <div class="btn btn-primary" type="button"  data-toggle="modal" data-target="#exampleModal">
-    </div> -->
-  <!-- add Event listener tick button radio => action (press button clean) -->
+
   <div class="container">
     <div class="modal fade modal-resize" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -41,12 +38,7 @@
     					<path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"/>
     					<path d="M0 0h24v24h-24z" fill="none"/>
     			</svg>
-          <!-- <div class="top-card"> -->
             <span class="card__full-num list-inline"></span>
-
-          <!-- </div> -->
-
-            <!-- créer 2 div en plus : Co2 top left // € top right  -->
         </div>
     		<div class="card__full-bottom">
     			<p class="card__full-handle"></p>
@@ -68,7 +60,6 @@
       </ul>
     </div>
   </div>
-</div>
 
   <%= content_for :after_js do  %>
   <script>
