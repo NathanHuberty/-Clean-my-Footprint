@@ -1,6 +1,6 @@
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default title-color">
+  <div class="panel panel-default title-color border-none">
     <div class="panel-heading title-color padding-none" role="tab" id="headingOne">
       <h4 class="panel-title text-center title-color">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
@@ -16,9 +16,28 @@
             <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
               <%= f.input :start_address, label: false, placeholder: "Adresse de départ",include_blank: false, error: 'Veuillez indiquer une adresse de départ' %>
               <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
-              <%= f.association :transportation, label: 'Moyen de transport', error: 'Le moyen de transport doit faire partie de la liste fournie' %>
-              <%= f.collection_radio_buttons :num_return, [[2, 'Aller retour'] ,[1, 'Aller simple']], :first, :last %>
+              <div class="text-center">
+                <label for="transportation">Moyen de transport</label>
+              <%#= f.association :transportation, label: false, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
+              </div>
+              <div class="radio-tile-group">
+                <% custom_transports.each do |transport| %>
+                  <div class="input-container">
+                    <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %>" />
+                    <div class="radio-tile">
+                      <div class="icon">
+                        <i class="fa fa-<%= transport[:icon] %>" aria-hidden="true"></i>
+                      </div>
+                      <label for="<%= transport[:icon] %>" class="radio-tile-label <%= 'font-smaller' if Transportation.find(transport[:name]).category == 'Transport en commun' %>"><%= Transportation.find(transport[:name]).category %></label>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
               <br>
+              <%= f.collection_check_boxes :num_return, [[1, 'Aller / retour']], :first, :last, item_wrapper_class: "checkbox-form text-center" %>
+
+              <br>
+
               <div class="row">
                 <div class="col-xs-6 col-sm-6">
                   <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
@@ -35,7 +54,7 @@
 
               <!--recurring trip form-->
               <div id="recurring" class="collapse">
-                <label for="number_per">Récurrence: </label>
+                <label for="number_per">Récurrence</label>
                 <div class="row">
                   <div class="col-xs-3">
                     <%= f.input :number_per, as: :integer, label: false, placeholder: '1' %>
@@ -49,14 +68,16 @@
                   </div>
                   <div class="row">
                     <div class="col-xs-12 col-sm-9 col-md-6">
-                      <div style="padding-left: 16px;">
-                        <%= f.input :date_since, as: :date, label: 'Depuis le' %>
+                      <div style="padding: 6px 15px;">
+                        <label for="date_since">Depuis le</label>
+                        <input type='text' name="date_since" class="form-control" id='datetimepicker4' />
+                        <%#= f.input :date_since, as: :date, label: 'Depuis le', input_html: { id: 'datetimepicker4' } %>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <%= f.button :submit %>
+              <%= f.button :submit, "Créer voyage", style:"background-color:#3AB696;border-color:#40b093;color:white;"%>
             <% end %>
           </div>
         </div>
@@ -65,6 +86,13 @@
   </div>
 </div>
 
+<%= content_for :after_js do  %>
+  <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker4').datetimepicker({format: "DD/MM/YYYY"});
+      });
+  </script>
+<% end %>
 
 
 

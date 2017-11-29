@@ -2,16 +2,30 @@ module FormatHelper
   def format_trips(trips)
     trips.map do |trip|
       [  [trip.id],
-        "<div class='col-xs-12 filter-radio travels-to-clean travel' type='button'
-        data-toggle='modal' data-target='#exampleModal'>
-        <p>
-          <i class='fa #{trip.transportation.icon}'aria-hidden='true'></i>
-          #{trip.start_address} - #{trip.destination_address}  #{km_total(trip.km, trip.number)}km
-          #{(trip.transportation.emission * km_total(trip.km, trip.number)).round(2)} kg CO2
-        </p>
-        <a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='trips/#{trip.id}'>
-          <i class='fa fa-trash-o' aria-hidden='true'></i>
-        </a>
+        "<div class=''>
+          <div class='col-xs-12 filter-radio travels-to-clean travel' type='button'
+          data-toggle='modal' data-target='#exampleModal'>
+
+            <div class='trip-to-compensate'>
+              <p>de: #{trip.start_address}</p>
+              <p>à: #{trip.destination_address}</p>
+            </div>
+
+<div class='trips-to'>
+
+<i class='fa #{trip.transportation.icon} transport-icon' aria-hidden='true'></i>
+            <div class='trip-to-compensate-infos text-center'>
+              <p>#{km_total(trip.km, trip.number)}km </p>
+              <p class='travel-emission'>#{(trip.transportation.emission * km_total(trip.km, trip.number)).round(2)} kg CO2</p>
+            </div>
+
+</div>
+          <div class='trash-size'>
+            <a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='trips/#{trip.id}'>
+            <i class='fa fa-close' style='color: white;' aria-hidden='true'></i>
+            </a>
+          </div>
+          </div>
         </div>".html_safe
       ]
     end

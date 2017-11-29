@@ -1,11 +1,6 @@
 .wrapper {
   background-color: $white;
 }
-.travels{
-  margin: 50px;
-}
-
-
 
 .travel {
   display: flex;
@@ -16,9 +11,53 @@
   p {
     color: $white;
     margin: 0;
-    padding: 10px 10px;
+    // padding: 10px 10px;
+    font-size: 11px;
+    // add if start_address.length < 20 characters font-size.14px  (same for destination_address)
   }
 }
+
+.panel-title > a, {
+    color: inherit;
+    font-size: 17px;
+
+}
+.trips-to {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 56%;
+}
+
+.travel-emission {
+  // position: absolute;
+  // top: 70%;
+  // left: 1px;
+  font-weight: 700;
+}
+.trip-to-compensate {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.trip-to-compensate-infos {
+  // position: absolute;
+  // right: 0;
+  // top: 40px;
+  font-weight: normal;
+}
+
+.transport-icon {
+  // position: absolute;
+  // top: 50%;
+  // right: center;
+  color: $white;
+  font-size: 24px;
+}
+
+
 .modal-header {
   display: flex;
 justify-content: space-between;
@@ -32,11 +71,19 @@ width: 100%;
 }
 .travels-to-clean {
   background-color: $red;
-  width: 100%;
-  height: 100px;
+  width: 330px;
+  font-size: 35px;
+  color: $white;
+  height: 121.5px;
+  left: 3%;
 }
 
-
+.trash-size {
+  font-size: 25px;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
 .logo-project-list {
   height: 100px;
   width: 100px;
@@ -47,14 +94,14 @@ width: 100%;
 
 .filter-radio {
   input[type=radio] {
-      border: 0;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
+      // border: 0;
+      // clip: rect(0 0 0 0);
+      // height: 1px;
+      // margin: -1px;
+      // overflow: hidden;
+      // padding: 0;
+      // position: absolute;
+      // width: 1px;
       display: none;
 
   }
@@ -69,13 +116,14 @@ width: 100%;
   }
 
   input[type=radio] ~ label:before {
-      font-family: FontAwesome;
-      display: inline-block;
-      content: "\f1db";
-      letter-spacing: 10px;
-      font-size: 10px;
-      color: $white;
-      margin-left: -15px;
+      // font-family: FontAwesome;
+      // display: inline-block;
+      // content: "\f1db";
+      // letter-spacing: 10px;
+      // font-size: 10px;
+      // color: $white;
+      // margin-left: -15px;
+      display: none;
   }
 
   input[type=radio]:checked ~ label:before {
