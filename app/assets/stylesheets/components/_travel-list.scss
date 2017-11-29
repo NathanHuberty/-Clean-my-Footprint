@@ -26,25 +26,27 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-position: absolute;
-top:56%;
+  position: absolute;
+  top: 56%;
 }
 
 .travel-emission {
   // position: absolute;
   // top: 70%;
   // left: 1px;
+  font-weight: 700;
 }
 .trip-to-compensate {
   position: absolute;
   top: 10px;
-  left: 10px  ;
+  left: 10px;
 }
 
 .trip-to-compensate-infos {
   // position: absolute;
   // right: 0;
   // top: 40px;
+  font-weight: normal;
 }
 
 .transport-icon {
@@ -52,6 +54,7 @@ top:56%;
   // top: 50%;
   // right: center;
   color: $white;
+  font-size: 24px;
 }
 
 
