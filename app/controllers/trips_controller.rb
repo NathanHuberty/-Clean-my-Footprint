@@ -3,6 +3,7 @@ require_relative '../services/google_api'
 class TripsController < ApplicationController
 
   def create
+    raise
     if params[:trip][:recurring] == "1"
       starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
       frequency = params[:trip][:number_per].to_i
@@ -13,8 +14,11 @@ class TripsController < ApplicationController
     else
       single_trips = params[:trip][:number_of_times].to_i
     end
+    
     @trip = current_user.trips.new(trip_params)
-    @trip.number = single_trips * params[:trip][:num_return].to_i
+    @trip.transportation = params[:transportation_id]
+    @trip.number = single_trips * (params[:trip][:num_return].to_i + 1)
+
 
     @trip.save
     distance_for_one_trip = GoogleApi.km_calcul(@trip)
@@ -41,6 +45,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_address, :destination_address, :number, :transportation_id)
+    params.require(:trip).permit(:start_address, :destination_address, :number)
   end
 end
