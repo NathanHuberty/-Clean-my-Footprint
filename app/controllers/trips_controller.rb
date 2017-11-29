@@ -3,8 +3,13 @@ require_relative '../services/google_api'
 class TripsController < ApplicationController
 
   def create
+    # On a besoin de ces 3 variables pour rendre pages/dashboard en cas d erreur
+    # Voir si on peut simplifier l action Pages#Dashboard
+
+
+    #TODO: Refacto dans un service ?
     if params[:trip][:recurring] == "1"
-      starting_date = Date.parse("#{params[:trip]['date_since(1i)']}/#{params[:trip]['date_since(2i)']}/#{params[:trip]['date_since(3i)']}")
+      starting_date = Date.parse(params["date_since"])
       frequency = params[:trip][:number_per].to_i
       time_unit = params[:trip][:time_unit]
       days_between = (Date.today - starting_date).to_i
@@ -16,23 +21,19 @@ class TripsController < ApplicationController
 
     @trip = current_user.trips.new(trip_params)
     @trip.transportation = Transportation.find(params[:transportation])
+
+    # ATTENTION single_trips ne doit jamais etre nil
     @trip.number = single_trips * (params[:trip][:num_return].last.to_i + 1)
-
-
-    @trip.save
-    distance_for_one_trip = GoogleApi.km_calcul(@trip)
-
-    if distance_for_one_trip.present?
-      @trip.update(km: distance_for_one_trip)
+    @trip.km = GoogleApi.km_calcul(@trip) if @trip.geocode
+    if @trip.save
       redirect_to dashboard_path
     else
-      @trip.destroy
       @compensation = Compensation.new
-      @trips = current_user.trips
       @projects = Project.all
-      render "pages/dashboard"
       flash[:alert] = "Not a valid route"
+      render "pages/dashboard"
     end
+
   end
 
   def destroy

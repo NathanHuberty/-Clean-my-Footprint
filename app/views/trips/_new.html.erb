@@ -14,14 +14,14 @@
           <div class="form-container">
             <h3>Rentrez votre trajet</h3>
             <%= simple_form_for @trip, url: trips_path( url: request.path ) do |f| %>
-              <%= f.input :start_address, label: false, placeholder: "Adresse de départ", error: 'Veuillez indiquer une adresse de départ' %>
+              <%= f.input :start_address, label: false, placeholder: "Adresse de départ",include_blank: false, error: 'Veuillez indiquer une adresse de départ' %>
               <%= f.input :destination_address, label: false, placeholder: "Adresse d'arrivée", error: 'Veuillez indiquer une adresse d\'arrivée' %>
               <div class="text-center">
                 <label for="transportation">Moyen de transport</label>
               <%#= f.association :transportation, label: false, error: 'Le moyen de transport doit faire partie de la liste fournie' %>
               </div>
               <div class="radio-tile-group">
-                <% @transports.each do |transport| %>
+                <% custom_transports.each do |transport| %>
                   <div class="input-container">
                     <input id="<%= transport[:icon] %>" class="radio-button" type="radio" name="transportation" value="<%= transport[:name] %>" checked="<%= 'checked' if transport[:name] == 'Avion' %>" />
                     <div class="radio-tile">
@@ -69,14 +69,15 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-9 col-md-6">
                       <div style="padding: 6px 15px;">
-                        <input type='text' class="form-control" id='datetimepicker4' />
+                        <label for="date_since">Depuis le</label>
+                        <input type='text' name="date_since" class="form-control" id='datetimepicker4' />
                         <%#= f.input :date_since, as: :date, label: 'Depuis le', input_html: { id: 'datetimepicker4' } %>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <%= f.button :submit %>
+              <%= f.button :submit, "Créer voyage", style:"background-color:#3AB696;border-color:#40b093;color:white;"%>
             <% end %>
           </div>
         </div>
@@ -88,11 +89,10 @@
 <%= content_for :after_js do  %>
   <script type="text/javascript">
       $(function () {
-          $('#datetimepicker4').datetimepicker();
+          $('#datetimepicker4').datetimepicker({format: "DD/MM/YYYY"});
       });
   </script>
 <% end %>
-
 
 
 
