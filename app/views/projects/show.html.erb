@@ -40,7 +40,7 @@
   <div class="row">
       <% Project.all.each do |project| %>
       <% if project != @project %>
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="col-xs-12 col-sm-6 col-md-3 full-width">
           <!--card-->
           <% if !(project.photos.empty?) %>
             <div class="project-card text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path project.photos[0].path %>);">
