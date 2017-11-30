@@ -88,7 +88,7 @@ var data = [
     img: '<p class="emission"><%= (trip.transportation.emission * km_total(trip.km, trip.number)).round(2) %> kg CO2 </p> <%= image_tag trip.compensation.project.logo, class:"logo-project-list info-player__num"%>  <p class="euros"> <%= trip.compensation.amount %>€</p>',
     handle: '<div>de : <%= trip.start_address %> <br /> à : <%= trip.destination_address %></div>',
     info: '<div class="text-center card-open-infos"> <i class="fa <%= trip.transportation.icon %> info-place card-open-transport " aria-hidden="true"></i>\
-     <p class="card-open-km"> <%= km_total(trip.km, trip.number).round(2)%> km</p> </div>'
+     <p class="card-open-km"> <%= trip.km.to_i%> km x <%=trip.number %></p> </div>'
   },
   <% end %>
 ];
