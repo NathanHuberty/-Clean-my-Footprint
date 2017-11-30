@@ -8,7 +8,9 @@
   height: 70px;
   justify-content: space-between;
   padding: 0 50px;
-  margin-top: 20px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
   a {
     color: inherit;
   }
