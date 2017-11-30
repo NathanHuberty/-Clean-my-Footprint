@@ -1,4 +1,5 @@
 <% content_for :title, @project.name %>
+
 <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
@@ -26,7 +27,9 @@
 <div class="container" >
   <div class="row">
     <div class="col-xs-12 col-md-6">
-      <h1><%= @project.name %></h1>
+      <%= image_tag @project.logo, class: "logo-project-show" %>
+      <h3><%= @project.name %></h3>
+      <p>Montant total versé à <%= @project.name %> : <strong><%= total_project_amount(@project) %></strong></%>€</p>
       <p><%= @project.description %></p>
     </div>
     <div class="col-xs-12 col-md-6 full-width">
@@ -40,7 +43,7 @@
   <div class="row">
       <% Project.all.each do |project| %>
       <% if project != @project %>
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="col-xs-12 col-sm-6 col-md-3 full-width">
           <!--card-->
           <% if !(project.photos.empty?) %>
             <div class="project-card text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path project.photos[0].path %>);">

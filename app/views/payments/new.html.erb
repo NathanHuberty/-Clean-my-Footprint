@@ -4,20 +4,31 @@
   width: 100%;
   bottom: 0;
 }*/
-  .img-round{
-    border-radius: 50%;
-    height:30vh;
-    margin: 26px 0px;
-  }
-
-.content {
-    padding-bottom: 70px;
+.img-round{
+  border-radius: 50%;
+  height:30vh;
+  width: 30vh;
+  margin: 16px 0px;
 }
+
+/*.content {
+  padding-bottom: 70px;
+}
+
+.content p {
+  font-size: 20px;
+}
+
+.content .bold {
+  font-weight: bolder;
+  font-size: 25px;
+}*/
+
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 767px) {
@@ -31,18 +42,17 @@
         height: 70px;
     }
 }
-
 </style>
 
 <% content_for :title, "Trip compensation" %>
 <div class="content">
   <div class="container text-center" style="margin-top:75px">
-  <h3>Compensating
+  <p class="bold">A compenser</p>
     <% @compensation.trips.each do |trip| %>
-      <%= "#{trip.start_address} - #{trip.destination_address} " %>
+      <p><%= trip.start_address %></p>
+      <p class="bold"><i class="fa <%= trip.transportation.icon %>" aria-hidden="true"></i></p>
+      <p><%= trip.destination_address %></p>
     <% end %>
-    trip
-  </h3>
   <%= cl_image_tag @compensation.project.logo, :class => "img-round"  %>
   <%= form_tag compensation_payments_path(@compensation) do %>
     <article>

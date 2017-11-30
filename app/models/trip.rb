@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  attr_accessor :num_return, :recurring, :occasional, :number_per, :time_unit, :date_since, :number_of_times
+  attr_accessor :num_return, :recurring, :occasional, :number_per, :time_unit, :date_since, :number_of_times, :frequency
 
   belongs_to :user
   belongs_to :transportation

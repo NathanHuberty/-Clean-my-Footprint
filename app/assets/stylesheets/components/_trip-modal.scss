@@ -6,6 +6,17 @@
   margin: 10px;
 }
 
+.logo-project-show {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin: 10px;
+  position: fixed;
+  top: 50px;
+  right: -10px;
+  z-index: 100;
+}
+
 .bouton-logo {
   border: none;
 }
