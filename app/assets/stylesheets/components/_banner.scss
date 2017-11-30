@@ -12,3 +12,19 @@
   // padding-top: 70px;
   // justify-content: space-around;
 }
+
+.banner-home {
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
+    url("https://source.unsplash.com/random/1200x850");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $white;
+  // height: calc(140vh - 80px);
+  display: flex;
+  align-items: center;
+  // padding-top: 70px;
+  // justify-content: space-around;
+  height: 84vh;
+}
