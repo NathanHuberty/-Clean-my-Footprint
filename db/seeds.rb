@@ -77,11 +77,11 @@ photo_urls_international = [
   "https://upload.wikimedia.org/wikipedia/commons/1/1f/England_-_English_Summer_Forest_%287183015516%29.jpg",
   "https://ssl.c.photoshelter.com/img-get2/I0000QlphWjjn9YU/fit=1000x750/European-lynx-MEUL136.jpg"
 ]
-#africa
+# Tanzanie
 photo_urls_future = [
-  "http://www.maasaichildreneducation.org/wp-content/uploads/2014/03/4431-1.jpg",#
+  "https://forestelephants.org/wp-content/uploads/2017/01/HomePageBanner-1024x768.jpg",#
   "http://internationaltreefoundation.org/wp-content/uploads/2017/05/Pupils-participating-in-tree-planting.jpg",
-  "http://topfarmer.co.ke/wp-content/uploads/2017/03/flegt2.jpg"#
+  "https://www.aboutanimals.com/images/african-forest-elephant-group-water-habitat-africa-820x422.jpg"#
 ]
 #indie
 # photo_urls_carbon = [
@@ -105,9 +105,15 @@ project_attributes = [
     photo_urls: photo_urls_billion_trees,
     logo: "http://static.bestfreewebresources.com/wp-content/uploads/2012/01/tree-logo-design-34.jpg" },
   { name: "Trees for the Future",
-    address: "Pologne",
+    address: "Tanzanie",
     carbon: 40,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Trees for the Future is a nonprofit organization founded in 1989 that helps communities
+    around the world plant trees. Trees for the Future to date has planted over 65 million trees worldwide
+    in 30 countries and has served over 11,000 villages around the world. Trees for the Future provides
+    free distance and agroforestry training and education; works in conjunction with over 53 specialists who
+    are experts in agroforestry, community development, sustainable agriculture, land use, livestock management,
+    women in development and youth education; provides in-country seed distribution, and works on natural
+    resource management",
     photo_urls: photo_urls_future,
     logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
   { name: "International Tree Foundation",
