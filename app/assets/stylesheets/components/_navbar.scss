@@ -12,9 +12,6 @@
   width:100%;
   top:0;
   z-index:10;
-  h3 {
-    font-size: 21px;
-  }
 }
 
 /* Logo */
@@ -119,3 +116,25 @@
     padding: 5px 2px 2px 2px;
   }
 }
+
+
+
+.title-size {
+  font-size: 25px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .title-size {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 330px) {
+  .title-size {
+    font-size: 16px;
+  }
+}
+
+
+

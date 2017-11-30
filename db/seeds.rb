@@ -27,18 +27,18 @@ user_attributes = { first_name: "Nathan",
 user = User.new(user_attributes)
 user.save!
 
-# creating users with radom attributes
-# 8.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email,
-#     password: "12345678"
-#   )
-#   user.save!
-# end
+# creating two users with random attributes
+2.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "12345678"
+  )
+  user.save!
+end
 
-puts "First user created"
+puts "Users created"
 
 
 # creating means of transportation
@@ -58,7 +58,7 @@ end
 
 puts "Transportations created"
 
-#mangrove
+# indonesie
 photo_urls_one_tree = [
 "http://4.bp.blogspot.com/-iCmIz42m_bc/U1SXjmUM2mI/AAAAAAAABfU/K0ttS54wsBA/s1600/mangrove.jpg",
 "http://vivre-en-thailande.com/files/2016/04/mangrove-p990.1280x814.jpg",
@@ -70,49 +70,72 @@ photo_urls_billion_trees = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/1_tianzishan_wulingyuan_zhangjiajie_2012.jpg/1200px-1_tianzishan_wulingyuan_zhangjiajie_2012.jpg",
   "http://www.brotherearth.com/en/wp-content/uploads/sites/3/2016/07/gujo_1.jpg"
 ]
-#europe
-photo_urls_future = [
+# UK
+photo_urls_international = [
   "https://d5gyvv73sl4au.cloudfront.net/assets/images/project/peru.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/d/df/Beech_forest_vtacnik.jpg",#
+  "https://upload.wikimedia.org/wikipedia/commons/1/1f/England_-_English_Summer_Forest_%287183015516%29.jpg",
   "https://ssl.c.photoshelter.com/img-get2/I0000QlphWjjn9YU/fit=1000x750/European-lynx-MEUL136.jpg"
 ]
-#africa
-photo_urls_international = [
-  "http://www.maasaichildreneducation.org/wp-content/uploads/2014/03/4431-1.jpg",#
+# Tanzanie
+photo_urls_future = [
+  "https://forestelephants.org/wp-content/uploads/2017/01/HomePageBanner-1024x768.jpg",#
   "http://internationaltreefoundation.org/wp-content/uploads/2017/05/Pupils-participating-in-tree-planting.jpg",
-  "http://topfarmer.co.ke/wp-content/uploads/2017/03/flegt2.jpg"#
+  "https://www.aboutanimals.com/images/african-forest-elephant-group-water-habitat-africa-820x422.jpg"#
 ]
 #indie
-photo_urls_carbon = [
- "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
- "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
- "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
-]
+# photo_urls_carbon = [
+#  "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
+#  "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
+#  "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
+# ]
 
 # creating projects
 project_attributes = [
   { name: "One Tree Planted",
-    address: "Malaisie",
+    address: "Indonésie",
     carbon: 150,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Sungai Buluh Besar is a part of Tanjung Puting National Park damaged by forest fires in 2015 when
+     30.000 Ha areas was burnt and destroyed by fire. Plant here and you get the satisfaction of helping an area
+     that needs the support and has heavy deforestation occuring because of Palm Oil.",
     photo_urls: photo_urls_one_tree,
     logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
   { name: "Plant a Billion Trees",
     address: "Chine",
     carbon: 90,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Increased development and a growing demand for wood products is turning what used to be some
+    of the most species-rich forests in the world to small, unsustainable groups of trees. The forests of
+    China’s Yunnan and Sichuan provinces are home to the endangered Yunnan golden monkey and the iconic panda,
+    and yet these species could disappear with the richness of their forests.
+    Your donation can turn the tide of deforestation and plant the roots for tomorrow.
+    You’ll do more than put a seed in the ground - you’ll make sure these forests can survive for future
+    generations.",
     photo_urls: photo_urls_billion_trees,
     logo: "http://static.bestfreewebresources.com/wp-content/uploads/2012/01/tree-logo-design-34.jpg" },
+
   { name: "Trees for the Future",
-    address: "Pologne",
+    address: "Tanzanie",
     carbon: 40,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Trees for the Future is a nonprofit organization founded in 1989 that helps communities
+    around the world plant trees. Trees for the Future to date has planted over 65 million trees worldwide
+    in 30 countries and has served over 11,000 villages around the world. Trees for the Future provides
+    free distance and agroforestry training and education; works in conjunction with over 53 specialists who
+    are experts in agroforestry, community development, sustainable agriculture, land use, livestock management,
+    women in development and youth education; provides in-country seed distribution, and works on natural
+    resource management",
     photo_urls: photo_urls_future,
     logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
+
   { name: "International Tree Foundation",
-    address: "Tanzanie",
+    address: "Angleterre",
     carbon: 110,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "The International Tree Foundation plants trees, protects and regenerates forests,
+    combats desertification and promotes sustainable forestry. We conserve forests, trees, associated
+    biodiversity and indigenous forestry knowledge internationally and in the UK and alleviate poverty
+    through sustainable community forestry and African drylands ‘regreening’ projects ITF’s projects involve
+    planting trees that provide food and income as well as improved soil and water quality for communities;
+    our sustainable approach to community forestry simultaneously addresses poverty and environmental issues
+    such as habitat restoration. There are often also fundamental rights issues involved in our projects such
+    as access to ancestral land.",
     photo_urls: photo_urls_international,
     logo: "http://gyr.fortlauderdale.gov/Home/ShowImage?id=2024&t=635657287021200000" }
 ]
@@ -124,54 +147,59 @@ end
 
 puts "Projects created"
 
-# creating trips, first 10 trips are not compensated!
-
+# creating trips for Nathan
 trip1 = Trip.create!(
-  user: user,
+  user: User.first,
   start_address: "Paris",
   destination_address: "Bordeaux",
   transportation: Transportation.where(category: "Train").first,
-  km: 550,
+  km: 499.3,
   number: 1
 )
 
 trip2 = Trip.create!(
-  user: user,
+  user: User.first,
   start_address: "12 avenue Thiers, 33100 Bordeaux",
   destination_address: "64 rue de la Santé 75014 Paris",
   transportation: Transportation.where(category: "Avion").first,
-  km: 510,
+  km: 495.33,
   number: 2
 )
 
 trip3 = Trip.create!(
-  user: user,
+  user: User.first,
   start_address: "Bordeaux",
   destination_address: "Manciet",
   transportation: Transportation.where(category: "Moto").first,
-  km: 150,
+  km: 125.57,
   number: 2
 )
 
 trip4 = Trip.create!(
-  user: user,
+  user: User.first,
   start_address: "Bordeaux",
   destination_address: "Amsterdam",
   transportation: Transportation.where(category: "Voiture").first,
-  km: 150,
+  km: 928.62,
   number: 8
 )
 
-# User.all.each do |user|
-#   10.times do
-#     trip = Trip.new(user: user, transportation: Transportation.all.sample, km: rand(20..1500), number: rand(1..10) )
-#     trip.save!
-#   end
-# end
+# trips for everybody except Nathan
+User.all[1..-1].each do |user|
+  rand(1..3).times do
+    trip = Trip.create!(user: user,
+      start_address: Faker::Address.city,
+      destination_address: Faker::Address.city,
+      transportation: Transportation.all.sample,
+      km: rand(20..1500),
+      number: rand(1..10) )
+    #trip.save!
+  end
+end
 
-puts "4 trips created"
+puts "trips created"
 
-# creating compensations
+# compensations for Nathan"s trips
 
 trip1 = Trip.first
 comp = Compensation.new
@@ -186,7 +214,7 @@ puts "km: #{trip1.km} emission: #{trip1.transportation.emission} number: #{trip1
 puts total_to_pay
 trip1.update!(compensation: comp)
 
-trip4 = Trip.last
+trip4 = Trip.find(4)
 comp = Compensation.new
 comp.project =  Project.all.sample
 # calculating total co2 emission and translate it into an amount
@@ -198,21 +226,24 @@ puts "km: #{trip4.km} emission: #{trip4.transportation.emission} number: #{trip4
 }"
 puts total_to_pay
 trip4.update!(compensation: comp)
-# Les 5 derniers Trips sont compensé
 
-# Trip.all.each do |trip|
-#   comp = Compensation.new
-#   comp.project =  Project.all.sample
-#   # calculating total co2 emission and translate it into an amount
-#   total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
 
-#   comp.amount = total_to_pay
-#   comp.save!
-#   puts "km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
-#   }"
-#   puts total_to_pay
-#   trip.update!(compensation: comp)
-# end
+# MAKING RANDOM COMPENSATIONS FOR RANDOM USERS' TRIPS
+Trip.all[4..-1].each do |trip|
+  if [true, false].sample
+    comp = Compensation.new
+    comp.project =  Project.all.sample
+    # calculating total co2 emission and translate it into an amount
+    total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
 
-puts "First and last trips compensated"
+    comp.amount = total_to_pay
+    comp.save!
+    puts "Compensated trip: km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
+    }"
+    puts "To pay: #{total_to_pay} euros"
+    trip.update!(compensation: comp)
+  end
+end
+
+puts "Compensations created"
 puts "End of seed"
