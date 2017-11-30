@@ -28,11 +28,14 @@
               <br>
 
               <div class="row">
-                <div class="col-xs-6 col-sm-6">
-                  <%= f.input :occasional, as: :boolean, label: "Occasionnel", input_html: { data: { toggle: "collapse", target: "#occasional" } } %>
-                </div>
-                <div class="col-xs-6 col-sm-6">
-                  <%= f.input :recurring, as: :boolean, label: "Récurrent", input_html: { data: { toggle: "collapse", target: "#recurring" } } %>
+                <div id="form_radio_buttons">
+                  <%= f.collection_radio_buttons :frequency, [['occasional', 'Occasionnel'], ['reccurent', 'Reccurent']], :first, :last, checked: "false", item_wrapper_tag: false, label: false do |input| %>
+                    <div class="col-xs-6 col-sm-6">
+                      <span class="frequency-buttons">
+                        <%= input.radio_button + input.label(class: "collection_radio_buttons") %>
+                      </span>
+                    </div>
+                  <% end %>
                 </div>
               </div>
               <br>
@@ -46,14 +49,14 @@
                 <label for="number_per">Récurrence</label>
                 <div class="row">
                   <div class="col-xs-3">
-                    <%= f.input :number_per, as: :integer, label: false, placeholder: '1' %>
+                    <%= f.input :number_per, as: :integer, label: false, input_html: {value: 1} %>
                   </div>
                   <div class="col-xs-3">
                    <!--  <div class ="text-center" style = "height:20px;padding-left: 10px;"></div> -->
                     <p class="font-small">fois par</p>
                   </div>
                   <div class="col-xs-6">
-                    <%= f.input :time_unit, label: false, collection: [ 'jour', 'semaine', 'mois' ] %>
+                    <%= f.input :time_unit, label: false, collection: [ 'jour', 'semaine', 'mois' ], default: 'jour' %>
                   </div>
                   <div class="row">
                     <div class="col-xs-12 col-sm-9 col-md-6">
@@ -70,3 +73,12 @@
             <% end %>
   </div>
 </div>
+<%= content_for :after_js do  %>
+  <script type="text/javascript">
+      $(function () {
+          $('#datetimepicker4').datetimepicker({format: "DD/MM/YYYY"});
+      });
+
+      form_radio();
+  </script>
+<% end %>
