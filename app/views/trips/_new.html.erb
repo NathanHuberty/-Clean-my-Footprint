@@ -1,4 +1,21 @@
+<style>
 
+.bootstrap-datetimepicker-widget table  {
+    color: #333;
+    font-size: 16px;
+}
+
+/*.bootstrap-datetimepicker-widget table td
+  {height: 20px; line-height: 0px; width: 8px; padding:0px !important; background-color: grey;}
+*/
+.bootstrap-datetimepicker-widget{
+  background-color: rgba(245,245,245,0.95);
+  border-radius: 3px;
+  max-height: 260px;
+  max-width: 260px;
+}
+
+</style>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default title-color border-none">
     <div class="panel-heading title-color padding-none" role="tab" id="headingOne">
@@ -92,11 +109,13 @@
 <%= content_for :after_js do  %>
   <script type="text/javascript">
       $(function () {
-          $('#datetimepicker4').datetimepicker({format: "DD/MM/YYYY"});
+          $('#datetimepicker4').datetimepicker({format: "DD/MM/YYYY"}
+            );
       });
 
       form_radio();
   </script>
+
 <% end %>
 
 <!-- form elements -->
