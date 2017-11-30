@@ -55,3 +55,33 @@
 .wrapper-game {
   padding: 10px 10px;
 }
+
+section#counter-stats {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+.stats {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.profile {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+.stats .fa {
+  color: #008080;
+  font-size: 60px;
+}
+
+.infos-profile{
+  display: flex;
+  justify-content: space-around;
+}

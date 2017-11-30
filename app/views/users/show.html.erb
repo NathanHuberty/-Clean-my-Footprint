@@ -1,15 +1,39 @@
-
-
 <div class="wrapper wrapper-game">
   <div class="bar-container">
+    <p class=" text-center profile"> Profil de <%= current_user.first_name %></p>
+    <section id="counter-stats" class="wow fadeInRight" data-wow-duration="1.4s">
+    	<div class="container">
+    		<div class="row infos-profile">
+    			<div class="col-xs-3 stats">
+    				<i class="fa fa-globe" aria-hidden="true"></i>
+    				<div class="counting" data-count="<%= (current_user.trips.clean.carbon_quantity).round(2) %>">0</div>
+    				<p>Co2 remboursé</p>
+    			</div>
+    			<div class="col-xs-3 stats">
+    				<i class="fa fa-rocket" aria-hidden="true"></i>
+    				<div class="counting" data-count="<%=   current_user.trips.clean.inject(0){ |sum, trip| sum + (trip.number * trip.km ) }%>">0</div>
+    				<p>Km cleaned</p>
+    			</div>
+    			<div class="col-xs-3 stats">
+    				<i class="fa fa-dollar" aria-hidden="true"></i>
+    				<div class="counting" data-count="<%= current_user.trips.clean.total_euro %>">0</div>
+
+
+
+            <p>Euros depensés</p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+    <div class="bar-icons">
+      <%= image_tag "levels/level-#{current_user.trips.level_index}.png" %>
+      <%= image_tag "levels/level-#{current_user.trips.level_index + 1}.png" %>
+    </div>
+    <div class="bar-background">
+      <div class="bar-progress" style="width: <%= 100 * @relative_score %>%" >
+        
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <div class="bar-icons">
-          <%= image_tag "levels/level-#{current_user.trips.level_index}.png" %>
-          <%= image_tag "levels/level-#{current_user.trips.level_index + 1}.png" %>
-        </div>
-        <div class="bar-background">
-          <div class="bar-progress" style="width: <%= 100 * @relative_score %>%" >
           </div>
         </div>
       </div>
@@ -29,5 +53,34 @@
       <% end  %>
     </div>
   </div>
-
 </div>
+
+
+
+
+
+
+<%= content_for :after_js do  %>
+  <script type="text/javascript">
+
+$('.counting').each(function() {
+var $this = $(this),
+    countTo = $this.attr('data-count');
+
+$({ countNum: $this.text()}).animate({
+  countNum: countTo
+},
+{
+  duration: 3000,
+  easing:'linear',
+  step: function() {
+    $this.text(Math.floor(this.countNum));
+  },
+  complete: function() {
+    $this.text(this.countNum);
+  }
+});
+});
+
+</script>
+<% end %>
