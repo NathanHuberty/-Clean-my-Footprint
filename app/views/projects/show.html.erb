@@ -56,8 +56,8 @@
               <p><%= project.address %></p>
             </div>
             <%= link_to project , class: "card-link" do %>
-              <h4>Hidden text</h4>
-              <p><%= project.description[0..86] %>...</p>
+              <h4><%= project.name %></h4>
+              <p><%= project.description[0..124] %>...</p>
             <% end %>
             </div>
         <% end %>
