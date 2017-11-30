@@ -2,6 +2,11 @@
 
 <div class="wrapper wrapper-game">
   <div class="bar-container">
+    <div><%= current_user.first_name %></div>
+    <div><%=   current_user.trips.clean.inject(0){ |sum, trip| sum + (trip.number * trip.km ) }%> km </div>
+    <div><%= current_user.trips.clean.carbon_quantity %> emission </div>
+
+
     <div class="bar-icons">
       <%= image_tag "levels/level-#{current_user.trips.level_index}.png" %>
       <%= image_tag "levels/level-#{current_user.trips.level_index + 1}.png" %>
