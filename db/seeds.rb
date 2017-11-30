@@ -28,17 +28,18 @@ user = User.new(user_attributes)
 user.save!
 
 # creating users with radom attributes
-# 8.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email,
-#     password: "12345678"
-#   )
-#   user.save!
-# end
+# TWO USERS
+2.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "12345678"
+  )
+  user.save!
+end
 
-puts "First user created"
+puts "Users created"
 
 
 # creating means of transportation
@@ -83,11 +84,11 @@ photo_urls_international = [
   "http://topfarmer.co.ke/wp-content/uploads/2017/03/flegt2.jpg"#
 ]
 #indie
-photo_urls_carbon = [
- "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
- "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
- "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
-]
+# photo_urls_carbon = [
+#  "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
+#  "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
+#  "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
+# ]
 
 # creating projects
 project_attributes = [
@@ -126,93 +127,99 @@ puts "Projects created"
 
 # creating trips, first 10 trips are not compensated!
 
-trip1 = Trip.create!(
-  user: user,
-  start_address: "Paris",
-  destination_address: "Bordeaux",
-  transportation: Transportation.where(category: "Train").first,
-  km: 550,
-  number: 1
-)
+# trip1 = Trip.create!(
+#   user: user,
+#   start_address: "Paris",
+#   destination_address: "Bordeaux",
+#   transportation: Transportation.where(category: "Train").first,
+#   km: 550,
+#   number: 1
+# )
 
-trip2 = Trip.create!(
-  user: user,
-  start_address: "12 avenue Thiers, 33100 Bordeaux",
-  destination_address: "64 rue de la Santé 75014 Paris",
-  transportation: Transportation.where(category: "Avion").first,
-  km: 510,
-  number: 2
-)
+# trip2 = Trip.create!(
+#   user: user,
+#   start_address: "12 avenue Thiers, 33100 Bordeaux",
+#   destination_address: "64 rue de la Santé 75014 Paris",
+#   transportation: Transportation.where(category: "Avion").first,
+#   km: 510,
+#   number: 2
+# )
 
-trip3 = Trip.create!(
-  user: user,
-  start_address: "Bordeaux",
-  destination_address: "Manciet",
-  transportation: Transportation.where(category: "Moto").first,
-  km: 150,
-  number: 2
-)
+# trip3 = Trip.create!(
+#   user: user,
+#   start_address: "Bordeaux",
+#   destination_address: "Manciet",
+#   transportation: Transportation.where(category: "Moto").first,
+#   km: 150,
+#   number: 2
+# )
 
-trip4 = Trip.create!(
-  user: user,
-  start_address: "Bordeaux",
-  destination_address: "Amsterdam",
-  transportation: Transportation.where(category: "Voiture").first,
-  km: 150,
-  number: 8
-)
+# trip4 = Trip.create!(
+#   user: user,
+#   start_address: "Bordeaux",
+#   destination_address: "Amsterdam",
+#   transportation: Transportation.where(category: "Voiture").first,
+#   km: 150,
+#   number: 8
+# )
 
-# User.all.each do |user|
-#   10.times do
-#     trip = Trip.new(user: user, transportation: Transportation.all.sample, km: rand(20..1500), number: rand(1..10) )
-#     trip.save!
-#   end
-# end
+User.all.each do |user|
+  rand(1..3).times do
+    trip = Trip.create!(user: user,
+      start_address: Faker::Address.city,
+      destination_address: Faker::Address.city,
+      transportation: Transportation.all.sample,
+      km: rand(20..1500),
+      number: rand(1..10) )
+    #trip.save!
+  end
+end
 
-puts "4 trips created"
+puts "trips created"
 
 # creating compensations
 
-trip1 = Trip.first
-comp = Compensation.new
-comp.project =  Project.all.sample
-# calculating total co2 emission and translate it into an amount
-total_to_pay = (co2_to_euro(trip1.km, trip1.transportation.emission, trip1.number, comp.project.carbon)).round(2)
+# trip1 = Trip.first
+# comp = Compensation.new
+# comp.project =  Project.all.sample
+# # calculating total co2 emission and translate it into an amount
+# total_to_pay = (co2_to_euro(trip1.km, trip1.transportation.emission, trip1.number, comp.project.carbon)).round(2)
 
-comp.amount = total_to_pay
-comp.save!
-puts "km: #{trip1.km} emission: #{trip1.transportation.emission} number: #{trip1.number} carbon #{comp.project.carbon
-}"
-puts total_to_pay
-trip1.update!(compensation: comp)
+# comp.amount = total_to_pay
+# comp.save!
+# puts "km: #{trip1.km} emission: #{trip1.transportation.emission} number: #{trip1.number} carbon #{comp.project.carbon
+# }"
+# puts total_to_pay
+# trip1.update!(compensation: comp)
 
-trip4 = Trip.last
-comp = Compensation.new
-comp.project =  Project.all.sample
-# calculating total co2 emission and translate it into an amount
-total_to_pay = (co2_to_euro(trip4.km, trip4.transportation.emission, trip4.number, comp.project.carbon)).round(2)
+# trip4 = Trip.last
+# comp = Compensation.new
+# comp.project =  Project.all.sample
+# # calculating total co2 emission and translate it into an amount
+# total_to_pay = (co2_to_euro(trip4.km, trip4.transportation.emission, trip4.number, comp.project.carbon)).round(2)
 
-comp.amount = total_to_pay
-comp.save!
-puts "km: #{trip4.km} emission: #{trip4.transportation.emission} number: #{trip4.number} carbon #{comp.project.carbon
-}"
-puts total_to_pay
-trip4.update!(compensation: comp)
+# comp.amount = total_to_pay
+# comp.save!
+# puts "km: #{trip4.km} emission: #{trip4.transportation.emission} number: #{trip4.number} carbon #{comp.project.carbon
+# }"
+# puts total_to_pay
+# trip4.update!(compensation: comp)
 # Les 5 derniers Trips sont compensé
 
-# Trip.all.each do |trip|
-#   comp = Compensation.new
-#   comp.project =  Project.all.sample
-#   # calculating total co2 emission and translate it into an amount
-#   total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
+# ALL TRIPS COMPENSATED
+Trip.all.each do |trip|
+  comp = Compensation.new
+  comp.project =  Project.all.sample
+  # calculating total co2 emission and translate it into an amount
+  total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
 
-#   comp.amount = total_to_pay
-#   comp.save!
-#   puts "km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
-#   }"
-#   puts total_to_pay
-#   trip.update!(compensation: comp)
-# end
+  comp.amount = total_to_pay
+  comp.save!
+  puts "km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
+  }"
+  puts total_to_pay
+  trip.update!(compensation: comp)
+end
 
-puts "First and last trips compensated"
+puts "Compensations created"
 puts "End of seed"
