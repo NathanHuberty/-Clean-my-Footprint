@@ -11,7 +11,7 @@
     			</div>
     			<div class="col-xs-3 stats">
     				<i class="fa fa-rocket" aria-hidden="true"></i>
-    				<div class="counting" data-count="<%=   current_user.trips.clean.inject(0){ |sum, trip| sum + (trip.number * trip.km ) }%>">0</div>
+    				<div class="counting" data-count="<%=   (current_user.trips.clean.inject(0){ |sum, trip| sum + (trip.number * trip.km ) }).to_i%>">0</div>
     				<p>Km cleaned</p>
     			</div>
     			<div class="col-xs-3 stats">
@@ -31,7 +31,7 @@
     </div>
     <div class="bar-background">
       <div class="bar-progress" style="width: <%= 100 * @relative_score %>%" >
-        
+
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
           </div>
