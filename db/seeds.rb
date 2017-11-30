@@ -214,7 +214,7 @@ puts "km: #{trip1.km} emission: #{trip1.transportation.emission} number: #{trip1
 puts total_to_pay
 trip1.update!(compensation: comp)
 
-trip4 = Trip.find(4)
+trip4 = User.first.trips.last
 comp = Compensation.new
 comp.project =  Project.all.sample
 # calculating total co2 emission and translate it into an amount
