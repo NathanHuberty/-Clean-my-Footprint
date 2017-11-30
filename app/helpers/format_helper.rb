@@ -34,7 +34,10 @@ module FormatHelper
 def format_project(projects)
   projects.map do |project|
     [  [project.id],
-       image_tag(project.logo,  class: 'logo-project-modal')
+       content_tag('div', class: "text-center test") {
+         image_tag(project.logo,  class: 'logo-project-modal') +
+         content_tag('div', "#{project.carbon}KgCO2/€")
+       }
     ]
   end
 end
