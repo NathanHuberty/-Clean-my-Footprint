@@ -206,19 +206,21 @@ puts "trips created"
 # trip4.update!(compensation: comp)
 # Les 5 derniers Trips sont compensé
 
-# ALL TRIPS COMPENSATED
+# MAKING COMPENSATIONS FOR RANDOM TRIPS
 Trip.all.each do |trip|
-  comp = Compensation.new
-  comp.project =  Project.all.sample
-  # calculating total co2 emission and translate it into an amount
-  total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
+  if [true, false].sample
+    comp = Compensation.new
+    comp.project =  Project.all.sample
+    # calculating total co2 emission and translate it into an amount
+    total_to_pay = (co2_to_euro(trip.km, trip.transportation.emission, trip.number, comp.project.carbon)).round(2)
 
-  comp.amount = total_to_pay
-  comp.save!
-  puts "km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
-  }"
-  puts total_to_pay
-  trip.update!(compensation: comp)
+    comp.amount = total_to_pay
+    comp.save!
+    puts "Compensated trip: km: #{trip.km} emission: #{trip.transportation.emission} number: #{trip.number} carbon #{comp.project.carbon
+    }"
+    puts "To pay: #{total_to_pay} euros"
+    trip.update!(compensation: comp)
+  end
 end
 
 puts "Compensations created"

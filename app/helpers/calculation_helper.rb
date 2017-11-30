@@ -12,6 +12,6 @@ module CalculationHelper
     project.compensations.each do |compensation|
       amount += compensation.amount_cents.to_f / 100
     end
-    amount
+    amount.round(2)
   end
 end
