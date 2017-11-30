@@ -62,5 +62,8 @@ class Trip < ApplicationRecord
     end
   end
 
+  def self.total_euro
+    all.inject(0) { |sum, trip| sum + trip.compensation.amount }
+  end
 
 end
