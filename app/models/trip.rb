@@ -43,7 +43,7 @@ class Trip < ApplicationRecord
       {
         image: "levels/level-4.png",
         content: "Super cleaner",
-        value: 10000
+        value: 10000000
       }
     ]
   end
