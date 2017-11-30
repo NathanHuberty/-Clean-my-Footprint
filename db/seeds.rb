@@ -101,9 +101,16 @@ project_attributes = [
   { name: "Plant a Billion Trees",
     address: "Chine",
     carbon: 90,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Increased development and a growing demand for wood products is turning what used to be some
+    of the most species-rich forests in the world to small, unsustainable groups of trees. The forests of
+    China’s Yunnan and Sichuan provinces are home to the endangered Yunnan golden monkey and the iconic panda,
+    and yet these species could disappear with the richness of their forests.
+    Your donation can turn the tide of deforestation and plant the roots for tomorrow.
+    You’ll do more than put a seed in the ground - you’ll make sure these forests can survive for future
+    generations.",
     photo_urls: photo_urls_billion_trees,
     logo: "http://static.bestfreewebresources.com/wp-content/uploads/2012/01/tree-logo-design-34.jpg" },
+
   { name: "Trees for the Future",
     address: "Tanzanie",
     carbon: 40,
@@ -116,6 +123,7 @@ project_attributes = [
     resource management",
     photo_urls: photo_urls_future,
     logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
+
   { name: "International Tree Foundation",
     address: "Angleterre",
     carbon: 110,
