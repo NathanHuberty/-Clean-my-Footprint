@@ -1,5 +1,6 @@
-.content {
-  padding-bottom: 70px;
+.content-payment {
+  // padding-bottom: 70px;
+  padding-top: 40px;
 }
 
 .content p {
@@ -9,4 +10,23 @@
 .content .bold {
   font-weight: bolder;
   font-size: 25px;
+}
+
+// .content-payment {
+//   p {
+//   font-size: 20px;
+//   }
+//   .bold {
+//   font-weight: bolder;
+//   font-size: 25px;
+//   }
+// }
+
+.container-payment {
+  background-color: rgba($dark_green, 0.3);
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  padding: 10px 20px;
+  margin: 20px auto;
 }
