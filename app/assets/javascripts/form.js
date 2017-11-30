@@ -1,5 +1,5 @@
 function form_radio() {
-  $("#occasional").collapse("show");
+  //$("#occasional").collapse("show");
   var reccurent = document.getElementById("trip_frequency_reccurent")
   var occasional = document.getElementById("trip_frequency_occasional")
   reccurent.addEventListener("click", function(e) {
