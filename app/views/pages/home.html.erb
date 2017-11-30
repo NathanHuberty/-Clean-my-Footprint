@@ -52,8 +52,12 @@
                     <%= f.input :number_per, as: :integer, label: false, input_html: {value: 1} %>
                   </div>
                   <div class="col-xs-3">
+
+                     <p class="font-small">fois par</p>
+
                    <!--  <div class ="text-center" style = "height:20px;padding-left: 10px;"></div> -->
-                    <p class="font-small">fois par</p>
+
+
                   </div>
                   <div class="col-xs-6">
                     <%= f.input :time_unit, label: false, collection: [ 'jour', 'semaine', 'mois' ], default: 'jour' %>
