@@ -57,7 +57,7 @@
     <%= link_to current_user, class: 'navbar-game' do %>
       <%= image_tag Trip.levels[current_user.trips.level_index][:image] %>
       <div class="navbar-progress">
-        <p><%= (current_user.trips.relative_score * 100).to_i %>%</p>
+        <p><%= (current_user.trips.clean.relative_score * 100).to_i %>%</p>
       </div>
     <% end %>
   <% end %>
