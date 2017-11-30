@@ -4,6 +4,9 @@
   width: 110px;
   border-radius: 50%;
   margin: 10px;
+  &.active {
+    border: 2px dashed $green;
+  }
 }
 
 .logo-project-show {
