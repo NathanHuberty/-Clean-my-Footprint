@@ -71,14 +71,14 @@ photo_urls_billion_trees = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/1_tianzishan_wulingyuan_zhangjiajie_2012.jpg/1200px-1_tianzishan_wulingyuan_zhangjiajie_2012.jpg",
   "http://www.brotherearth.com/en/wp-content/uploads/sites/3/2016/07/gujo_1.jpg"
 ]
-#europe
-photo_urls_future = [
+# UK
+photo_urls_international = [
   "https://d5gyvv73sl4au.cloudfront.net/assets/images/project/peru.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/d/df/Beech_forest_vtacnik.jpg",#
+  "https://upload.wikimedia.org/wikipedia/commons/1/1f/England_-_English_Summer_Forest_%287183015516%29.jpg",
   "https://ssl.c.photoshelter.com/img-get2/I0000QlphWjjn9YU/fit=1000x750/European-lynx-MEUL136.jpg"
 ]
 #africa
-photo_urls_international = [
+photo_urls_future = [
   "http://www.maasaichildreneducation.org/wp-content/uploads/2014/03/4431-1.jpg",#
   "http://internationaltreefoundation.org/wp-content/uploads/2017/05/Pupils-participating-in-tree-planting.jpg",
   "http://topfarmer.co.ke/wp-content/uploads/2017/03/flegt2.jpg"#
@@ -111,9 +111,16 @@ project_attributes = [
     photo_urls: photo_urls_future,
     logo: "http://treeocodeniagara.com/wp-content/uploads/2016/04/Tree-Planting-Sign.png" },
   { name: "International Tree Foundation",
-    address: "Tanzanie",
+    address: "Angleterre",
     carbon: 110,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "The International Tree Foundation plants trees, protects and regenerates forests,
+    combats desertification and promotes sustainable forestry. We conserve forests, trees, associated
+    biodiversity and indigenous forestry knowledge internationally and in the UK and alleviate poverty
+    through sustainable community forestry and African drylands ‘regreening’ projects ITF’s projects involve
+    planting trees that provide food and income as well as improved soil and water quality for communities;
+    our sustainable approach to community forestry simultaneously addresses poverty and environmental issues
+    such as habitat restoration. There are often also fundamental rights issues involved in our projects such
+    as access to ancestral land.",
     photo_urls: photo_urls_international,
     logo: "http://gyr.fortlauderdale.gov/Home/ShowImage?id=2024&t=635657287021200000" }
 ]
