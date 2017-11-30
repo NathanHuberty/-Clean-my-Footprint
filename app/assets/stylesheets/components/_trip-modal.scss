@@ -5,7 +5,7 @@
   border-radius: 50%;
   margin: 10px;
   &.active {
-    border: 2px dashed $green;
+    border: 2px dashed $light_green;
   }
 }
 .test {
@@ -18,10 +18,10 @@
   border-radius: 50%;
   margin: 10px;
   position: fixed;
-  top: 50px;
-  right: -10px;
+  top: 56px;
+  left: -8px;
   z-index: 100;
-  border: solid 3px $light_green;
+  border: solid 2px $light_green;
 }
 
 .bouton-logo {
