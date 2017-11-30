@@ -59,7 +59,7 @@ end
 
 puts "Transportations created"
 
-#mangrove
+# indonesie
 photo_urls_one_tree = [
 "http://4.bp.blogspot.com/-iCmIz42m_bc/U1SXjmUM2mI/AAAAAAAABfU/K0ttS54wsBA/s1600/mangrove.jpg",
 "http://vivre-en-thailande.com/files/2016/04/mangrove-p990.1280x814.jpg",
@@ -93,9 +93,11 @@ photo_urls_future = [
 # creating projects
 project_attributes = [
   { name: "One Tree Planted",
-    address: "Malaisie",
+    address: "Indonésie",
     carbon: 150,
-    description: Faker::Lorem.paragraph(8, false, 2),
+    description: "Sungai Buluh Besar is a part of Tanjung Puting National Park damaged by forest fires in 2015 when
+     30.000 Ha areas was burnt and destroyed by fire. Plant here and you get the satisfaction of helping an area
+     that needs the support and has heavy deforestation occuring because of Palm Oil.",
     photo_urls: photo_urls_one_tree,
     logo: "https://images-platform.99static.com/_l1aD_Pss_hM9aAvKVUoBTW2w5w=/500x500/top/smart/99designs-contests-attachments/30/30161/attachment_30161703" },
   { name: "Plant a Billion Trees",
