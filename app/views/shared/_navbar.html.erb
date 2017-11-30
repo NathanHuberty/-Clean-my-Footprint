@@ -48,7 +48,16 @@
     <% end %>
   </div>
 
+
+  <%= link_to current_user, class: 'navbar-game' do %>
+    <%= image_tag Trip.levels[current_user.trips.level_index][:image] %>
+    <div class="navbar-progress">
+      <p><%= (current_user.trips.relative_score * 100).to_i %>%</p>
+    </div>
+  <% end %>
+
   <!-- Dropdown list appearing on mobile only -->
+
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
@@ -64,11 +73,5 @@
       </ul>
     </div>
   </div>
-  <%= link_to current_user, class: 'navbar-game' do %>
-    <%= image_tag Trip.levels[current_user.trips.level_index][:image] %>
-    <div class="navbar-progress">
-      <p><%= (current_user.trips.relative_score * 100).to_i %>%</p>
-    </div>
-  <% end %>
   <!-- <div class="navbar-game">coco</div> -->
 </div>
