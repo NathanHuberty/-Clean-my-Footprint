@@ -13,14 +13,15 @@
 }
 
 .logo-project-show {
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   margin: 10px;
   position: fixed;
   top: 50px;
   right: -10px;
   z-index: 100;
+  border: solid 3px $light_green;
 }
 
 .bouton-logo {

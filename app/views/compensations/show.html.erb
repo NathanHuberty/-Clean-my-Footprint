@@ -13,14 +13,18 @@
 /*.content {
     padding-bottom: 70px;
 }*/
-.footer {
+/*.footer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-}
+}*/
 
-@media screen and (max-width: 767px) {
+/*.content {
+  padding-top: 40px;
+}*/
+
+/*@media screen and (max-width: 767px) {
     .content {
         padding-bottom: 0;
     }
@@ -30,13 +34,14 @@
         left: auto;
         height: 70px;
     }
-}
+}*/
 </style>
 
 
 <% content_for :title, "Compensation confirmed" %>
-<div class="content">
-  <div class="container" style="margin-top:70px;">
+<div class="content content-payment">
+  <!-- <div class="container" style="margin-top:70px;"> -->
+  <div class="container-payment">
     <p class="bold text-center">Empreinte équilibrée</p>
     <ul style="list-style: none">
 <!--       <li>Status: <%= @compensation.state %></li> -->
@@ -51,9 +56,16 @@
           <strong><%= trip.transportation.category.downcase %></strong>
         </li>
         <br>
+        <br>
         <li><strong><%= (km_total(trip.km, trip.number) * trip.transportation.emission).round(2) %> kg/CO2</strong> compensés avec l'association <%= trip.compensation.project.name %>.
         </li>
       <% end %>
       <li>Montant : <%= humanized_money_with_symbol(@compensation.amount) %></li>
+    </ul>
+  </div>
+  <br>
+  <!-- </div> -->
+  <div class="container text-center">
+    <%= link_to "Retour", dashboard_path, class: "btn btn-success" %>
   </div>
 </div>
