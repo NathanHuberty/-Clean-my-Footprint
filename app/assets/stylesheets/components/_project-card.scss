@@ -59,8 +59,8 @@
   font-weight: lighter;
   p {
     font-size: 18px;
+    font-weight: bolder;
   }
-  margin-top: 12px;
 }
 .card-link {
   position: absolute;
@@ -78,4 +78,6 @@
   text-decoration: none;
   color:#FFF;
   transition: 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
 }
