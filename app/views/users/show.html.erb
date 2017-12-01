@@ -4,17 +4,17 @@
     <section id="counter-stats" class="wow fadeInRight" data-wow-duration="1.4s">
     	<div class="container">
     		<div class="row infos-profile">
-    			<div class="col-xs-3 stats">
+    			<div class="col-xs-4 stats">
     				<i class="fa fa-globe" aria-hidden="true"></i>
-    				<div class="counting" data-count="<%= (current_user.trips.clean.carbon_quantity).round(2) %>">0</div>
+    				<div class="counting" data-count="<%= (@carbon_quantity).round(2) %>">0</div>
     				<p>kg/Co2 compensés</p>
     			</div>
-    			<div class="col-xs-3 stats">
+    			<div class="col-xs-4 stats">
     				<i class="fa fa-rocket" aria-hidden="true"></i>
     				<div class="counting" data-count="<%=   (current_user.trips.clean.inject(0){ |sum, trip| sum + (trip.number * trip.km ) }).to_i%>">0</div>
     				<p>Km parcourus</p>
     			</div>
-    			<div class="col-xs-3 stats">
+    			<div class="col-xs-4 stats">
     				<i class="fa fa-dollar" aria-hidden="true"></i>
     				<div class="counting" data-count="<%= current_user.trips.clean.total_euro.round(2) %>">0</div>
             <p>€ remboursés</p>
@@ -25,8 +25,8 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <div class="bar-icons">
-          <%= image_tag "levels/level-#{current_user.trips.level_index}.png" %>
-          <%= image_tag "levels/level-#{current_user.trips.level_index + 1}.png" %>
+          <%= image_tag "levels/level-#{current_user.trips.clean.level_index}.png" %>
+          <%= image_tag "levels/level-#{current_user.trips.clean.level_index + 1}.png" %>
         </div>
         <div class="bar-background">
           <div class="bar-progress" style="width: <%= 100 * @relative_score %>%" >
@@ -39,7 +39,7 @@
     <div class="row">
       <% current_user.trips.clean.levels.each_with_index do |level, i| %>
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-          <div class="level-inline <%= 'level-active' if i == current_user.trips.level_index %>">
+          <div class="level-inline <%= 'level-active' if i == current_user.trips.clean.level_index %>">
             <%= image_tag level[:image] %>
             <p><%= level[:content] %></p>
             <p><%= level[:value] %></p>
