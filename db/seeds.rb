@@ -82,12 +82,6 @@ photo_urls_future = [
   "http://internationaltreefoundation.org/wp-content/uploads/2017/05/Pupils-participating-in-tree-planting.jpg",
   "https://www.aboutanimals.com/images/african-forest-elephant-group-water-habitat-africa-820x422.jpg"#
 ]
-#indie
-# photo_urls_carbon = [
-#  "https://previews.123rf.com/images/501room/501room1206/501room120600031/14208153-Mangrove-forest-Planting-trees-to-the-treatment-plant--Stock-Photo.jpg",#
-#  "http://www.communitycarbontrees.org/pics/pic59Gal07091514431.jpg",
-#  "http://www.communitycarbontrees.org/pics/pic41Gal10121409705.jpg"#
-# ]
 
 # creating projects
 project_attributes = [
@@ -186,20 +180,19 @@ trip4 = Trip.create!(
 
 # trips for everybody except Nathan
 User.all[1..-1].each do |user|
-  rand(1..3).times do
+  rand(8..12).times do
     trip = Trip.create!(user: user,
       start_address: Faker::Address.city,
       destination_address: Faker::Address.city,
       transportation: Transportation.all.sample,
-      km: rand(20..1500),
+      km: rand(40000..50000),
       number: rand(1..10) )
-    #trip.save!
   end
 end
 
 puts "trips created"
 
-# compensations for Nathan"s trips
+# compensations for Nathan's trips
 
 trip1 = Trip.first
 comp = Compensation.new
@@ -230,7 +223,7 @@ trip4.update!(compensation: comp)
 
 # MAKING RANDOM COMPENSATIONS FOR RANDOM USERS' TRIPS
 Trip.all[4..-1].each do |trip|
-  if [true, false].sample
+  if [true].sample # all trips will be compensated, original: if [true, false].sample
     comp = Compensation.new
     comp.project =  Project.all.sample
     # calculating total co2 emission and translate it into an amount
