@@ -38,12 +38,12 @@ class Trip < ApplicationRecord
       {
         image: "levels/level-3.png",
         content: "Cleaner adulte",
-        value: 20000
+        value: 50000
       },
       {
         image: "levels/level-4.png",
         content: "Super cleaner",
-        value: 100000
+        value: 900000
       }
     ]
   end
