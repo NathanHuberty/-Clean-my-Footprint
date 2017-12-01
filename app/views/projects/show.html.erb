@@ -1,4 +1,6 @@
-<% content_for :title, @project.name %>
+<% content_for :meta_title, @project.name %>
+<% content_for :meta_description, @project.description[0..70] %>
+<% content_for :meta_image, cl_image_path(@project.photos[0].path) %>
 
 <div id="myCarousel" class="carousel slide" data-interval="6000" data-ride="carousel">
     <!-- Carousel indicators -->

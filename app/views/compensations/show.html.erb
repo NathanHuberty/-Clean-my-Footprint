@@ -38,7 +38,9 @@
 </style>
 
 
-<% content_for :title, "Compensation confirmed" %>
+<% content_for :meta_title, "Compensation confirmed" %>
+<% content_for :meta_description, "You have successfully cleaned the carbon footprint of your trip by making a donation to #{@compensation.project.name}." %>
+<% content_for :meta_image, cl_image_path(@compensation.project.photos[0].path) %>
 <div class="content content-payment">
   <!-- <div class="container" style="margin-top:70px;"> -->
   <div class="container-payment">
@@ -57,7 +59,7 @@
         </li>
         <br>
         <br>
-        <li><strong><%= (km_total(trip.km, trip.number) * trip.transportation.emission).round(2) %> kg/CO2</strong> compensés avec l'association <%= trip.compensation.project.name %>.
+        <li><strong><%= (km_total(trip.km, trip.number) * trip.transportation.emission).round(2) %> kg CO2</strong> compensés avec l'association <%= trip.compensation.project.name %>.
         </li>
       <% end %>
       <li>Montant : <%= humanized_money_with_symbol(@compensation.amount) %></li>
