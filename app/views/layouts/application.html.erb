@@ -7,11 +7,7 @@
         <%= meta_title %>
         <%#= yield_with_default(:title, "Clean my Footprint") %>
       </title>
-    <!--favicon-->
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= favicon_link_tag asset_path('logo_green.png'), :rel => 'icon', :type =>  'image/png' %>
+
 
     <meta name="description" content="<%= meta_description %>">
 
@@ -30,7 +26,11 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
-
+     <!--favicon-->
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= favicon_link_tag asset_path('logo_green.png'), :rel => 'icon', :type =>  'image/png' %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
