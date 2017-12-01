@@ -7,6 +7,15 @@
     <h3 class="title-size">Clean my Footprint</h3>
   </div>
 
+    <!-- Navbar game -->
+  <% if user_signed_in? %>
+    <%= link_to current_user, class: 'navbar-game' do %>
+      <%= image_tag Trip.levels[current_user.trips.clean.level_index][:image] %>
+      <div class="navbar-progress">
+        <p><%= (current_user.trips.clean.relative_score * 100).to_i %>%</p>
+      </div>
+    <% end %>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -29,12 +38,12 @@
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to current_user do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to "/dashboard" do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
@@ -52,15 +61,7 @@
     <% end %>
   </div>
 
-  <!-- Navbar game -->
-  <% if user_signed_in? %>
-    <%= link_to current_user, class: 'navbar-game' do %>
-      <%= image_tag Trip.levels[current_user.trips.clean.level_index][:image] %>
-      <div class="navbar-progress">
-        <p><%= (current_user.trips.clean.relative_score * 100).to_i %>%</p>
-      </div>
-    <% end %>
-  <% end %>
+
 
   <!-- Dropdown list appearing on mobile only -->
 
