@@ -27,23 +27,23 @@ class Trip < ApplicationRecord
       },
       {
         image: "levels/level-1.png",
-        content: "Cleaner ado",
-        value: 100
+        content: "Kid cleaner",
+        value: 500
       },
       {
         image: "levels/level-2.png",
-        content: "Cleaner adulte",
-        value: 1000
+        content: "Cleaner ado",
+        value: 5000
       },
       {
         image: "levels/level-3.png",
-        content: "Cleaner écolo",
-        value: 5000
+        content: "Cleaner adulte",
+        value: 20000
       },
       {
         image: "levels/level-4.png",
         content: "Super cleaner",
-        value: 10000000
+        value: 100000
       }
     ]
   end
