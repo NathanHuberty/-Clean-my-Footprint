@@ -15,7 +15,8 @@ class Trip < ApplicationRecord
   scope :clean, -> { where.not(compensation_id: nil) }
 
   def self.carbon_quantity
-    all.inject(0){ |sum, trip| sum + (trip.number * trip.km * trip.transportation.emission) }
+    q = all.inject(0){ |sum, trip| sum + (trip.number * trip.km * trip.transportation.emission) }
+    q + 0.01
   end
 
   def self.levels
@@ -55,7 +56,7 @@ class Trip < ApplicationRecord
 
   def self.relative_score
     i = level_index
-    if i != levels[i][:value].size - 1
+    if i != levels.size - 1
       (carbon_quantity - levels[i][:value]) / (levels[i + 1][:value] - levels[i][:value])
     else
       1
